@@ -1,0 +1,7 @@
+#!/bin/sh
+
+scp -r ./.homeassistant/automations.yaml homeassistant@192.168.1.146:/home/homeassistant/.homeassistant/automations.yaml
+scp -r ./.homeassistant/configuration.yaml homeassistant@192.168.1.146:/home/homeassistant/.homeassistant/configuration.yaml
+scp -r ./.homeassistant/customize.yaml homeassistant@192.168.1.146:/home/homeassistant/.homeassistant/customize.yaml
+scp -r ./.homeassistant/groups.yaml homeassistant@192.168.1.146:/home/homeassistant/.homeassistant/groups.yaml
+# scp -r ./.homeassistant/known_devices.yaml homeassistant@192.168.1.146:/home/homeassistant/.homeassistant/known_devices.yaml
