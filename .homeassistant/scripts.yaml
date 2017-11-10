@@ -1,0 +1,6 @@
+'1510282169421':
+  alias: Turn off all lights
+  sequence:
+  - data:
+      brightness: 0
+    service: light.turn_on
