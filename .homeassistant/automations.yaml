@@ -1,30 +1,3 @@
-- alias: "Wakeup - Slowly Turn Off Light"
-  trigger:
-    platform: state
-    entity_id: group.exterior_doors
-    to: 'on'
-  condition:
-    condition: state
-    entity_id: alarm_control_panel.alarm_panel
-    state: 'armed_away'
-  action:
-    - service: switch.turn_on
-      entity_id:
-        - switch.main_floor_siren
-        - switch.basement_siren
-    - service: notify.sns
-      data:
-        message: 'Away - Alarm is sounding.'
-        target: 'redacted'
-    - delay: '00:00:30'
-    - service: switch.turn_on
-      entity_id:
-        - switch.main_floor_siren
-        - switch.basement_siren
-
-
-
-
 - alias: Wakeup - Slowly Turn Off Light
   id: '1510113291429'
   trigger:
@@ -40,11 +13,11 @@
         transition: 10
 
 
-  alias: Wakeup - Slowly Turn On Light
+- alias: Wakeup - Slowly Turn On Light
   id: '1510114284366'
   trigger:
   - platform: time
-    at: 07:45:00
+    at: '07:40:00'
   condition:
   - condition: time
     weekday:
@@ -57,10 +30,23 @@
   - service: light.turn_on
     entity_id: light.sengled_z01a19nae26_0301dbb2_1
     data:
+      brightness: 0
+      kelvin: 2700
+      transition: 3
+  - delay: '00:00:10'
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
       brightness: 255
       kelvin: 6500
       transition: 600
-
+  - delay: '01:00:00'
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
+      brightness: 0
+      kelvin: 2700
+      transition: 10
 
 
 - alias: Home - Turn on light
@@ -80,13 +66,13 @@
     entity_id: light.sengled_e11g13_0306f75b_1
     data:
       brightness: 255
-      transition: 3
-  - delay: '00:00:10'
+      transition: 5
+  - delay: '00:05:00'
   - service: light.turn_on
     entity_id: light.sengled_e11g13_0306f75b_1
     data:
       brightness: 0
-      transition: 3
+      transition: 30
 
 
 - alias: Leave - turn off light
@@ -101,6 +87,6 @@
   - data:
       brightness: 0
       entity_id: light.sengled_e11g13_0306f75b_1
-      transition: 3
+      transition: 5
     service: light.turn_on
 
