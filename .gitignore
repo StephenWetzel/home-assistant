@@ -3,3 +3,5 @@
 *.backup
 *.pickle
 *.sqlite
+.HA_VERSION
+secrets.yaml
