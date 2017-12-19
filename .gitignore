@@ -1,2 +1,5 @@
 *.db
 *.log
+*.backup
+*.pickle
+*.sqlite
