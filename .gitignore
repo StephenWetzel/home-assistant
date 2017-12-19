@@ -5,3 +5,4 @@
 *.sqlite
 .HA_VERSION
 *secrets.yaml
+*/tts/

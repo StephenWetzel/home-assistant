@@ -40,7 +40,7 @@
       brightness: 255
       kelvin: 6500
       transition: 600
-  - delay: '01:00:00'
+  - delay: '01:30:00'
   - service: light.turn_on
     entity_id: light.sengled_z01a19nae26_0301dbb2_1
     data:
@@ -52,7 +52,7 @@
 - alias: Home - Turn on light
   id: '1510273891568'
   trigger:
-  - entity_id: device_tracker.android9e4e78ab9fffc23b
+  - entity_id: device_tracker.androide3fba1225244fe27
     platform: state
     from: not_home
     to: home
@@ -79,7 +79,7 @@
   id: '1510275830231'
   condition: []
   trigger:
-  - entity_id: device_tracker.android9e4e78ab9fffc23b
+  - entity_id: device_tracker.androide3fba1225244fe27
     from: home
     platform: state
     to: not_home

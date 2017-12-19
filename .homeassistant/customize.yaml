@@ -1,4 +1,7 @@
 device_tracker.android9e4e78ab9fffc23b:
+  friendly_name: BLU
+  hidden: true
+device_tracker.androide3fba1225244fe27:
   friendly_name: Steve
 device_tracker.000d6782445e:
   hidden: true
@@ -14,6 +17,8 @@ device_tracker.phimac09:
   hidden: true
 device_tracker.000d677d5c5a:
   hidden: true
+device_tracker.8c0f6f3303f1:
+  hidden: true
 sensor.dht_sensor_humidity:
   friendly_name: DHT Humidity
 sensor.dht_sensor_temperature:
@@ -22,3 +27,7 @@ light.sengled_e11g13_0306f75b_1:
   friendly_name: sengled standard 1
 light.sengled_z01a19nae26_0301dbb2_1:
   friendly_name: sengled temp 1
+device_tracker.d02598b8fe77:
+  friendly_name: Melanie
+device_tracker.b827eb308efb:
+  hidden: true
