@@ -4,4 +4,4 @@
 *.pickle
 *.sqlite
 .HA_VERSION
-secrets.yaml
+*secrets.yaml
