@@ -65,6 +65,19 @@ binary_sensor:
 
 
 sensor:
+  - platform: darksky
+    api_key: !secret dark_sky_key
+    monitored_conditions:
+      - summary
+      - precip_type
+      - apparent_temperature
+
+  - platform: apcupsd
+    resources:
+      - bcharge
+      - linev
+      - loadpct
+
   - platform: dht
     sensor: DHT22
     name: "Bedroom"
@@ -93,7 +106,7 @@ sensor:
 
   - platform: yr
 
-  - platform: moon
+  # - platform: moon
 
   - platform: systemmonitor
     resources:
@@ -118,7 +131,7 @@ device_tracker:
 
 switch:
   - platform: tplink
-    host: 192.168.1.130
+    host: 192.168.1.228
 
 
 recorder:
@@ -144,7 +157,10 @@ recorder:
 
 media_player:
   - platform: mpd
-    host: 192.168.1.145
+    host: 192.168.1.138
+
+apcupsd:
+  host: 192.168.1.138
 
 usps:
   username: !secret usps_username
