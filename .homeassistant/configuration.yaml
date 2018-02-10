@@ -114,6 +114,7 @@ sensor:
         arg: /
       - type: memory_use_percent
       - type: load_1m
+      - type: load_15m
       - type: ipv4_address
         arg: wlan0
       - type: since_last_boot
@@ -157,6 +158,10 @@ recorder:
 
 media_player:
   - platform: mpd
+    host: localhost
+    name: mpd_bed_room
+  - platform: mpd
+    name: mpd_living_room
     host: 192.168.1.138
 
 apcupsd:

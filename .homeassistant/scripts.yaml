@@ -1,6 +1,58 @@
-'1510282169421':
+turn_off_lights:
   alias: Turn off all lights
   sequence:
   - data:
       brightness: 0
     service: light.turn_on
+
+stop_sound:
+  alias: Stop All Sound
+  sequence:
+  - service: media_player.media_stop
+    data:
+      entity_id: media_player.mpd_bed_room
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.mpd_bed_room
+  - service: media_player.media_stop
+    data:
+      entity_id: media_player.mpd_living_room
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.mpd_living_room
+
+tng:
+  alias: Ambient - TNG
+  sequence:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.mpd_bed_room
+      media_content_type: playlist
+      media_content_id: star_trek_warp
+
+brook:
+  alias: Ambient - Brook
+  sequence:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.mpd_bed_room
+      media_content_type: playlist
+      media_content_id: brook
+
+fire:
+  alias: Ambient - Fire
+  sequence:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.mpd_bed_room
+      media_content_type: playlist
+      media_content_id: fire
+
+waves:
+  alias: Ambient - Waves
+  sequence:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.mpd_bed_room
+      media_content_type: playlist
+      media_content_id: waves

@@ -28,6 +28,21 @@ light.sengled_e11g13_0306f75b_1:
 light.sengled_z01a19nae26_0301dbb2_1:
   friendly_name: sengled temp 1
 device_tracker.d02598b8fe77:
+  friendly_name: Melanie-Old
+  hidden: true
+device_tracker.b8634d4ac717:
   friendly_name: Melanie
 device_tracker.b827eb308efb:
   hidden: true
+group.all_lights:
+  hidden: false
+media_player.mpd_living_room:
+  friendly_name: Living Room MPD
+media_player.mpd_bed_room:
+  friendly_name: Bedroom MPD
+media_player.roku_5f45cm000620:
+  friendly_name: Living Room Roku
+media_player.roku_yr00aa293226:
+  friendly_name: Bedroom Roku
+
+

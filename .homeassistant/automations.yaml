@@ -52,7 +52,7 @@
 - alias: Home - Turn on light
   id: '1510273891568'
   trigger:
-  - entity_id: device_tracker.androide3fba1225244fe27
+  - entity_id: group.people
     platform: state
     from: not_home
     to: home
@@ -79,7 +79,7 @@
   id: '1510275830231'
   condition: []
   trigger:
-  - entity_id: device_tracker.androide3fba1225244fe27
+  - entity_id: group.people
     from: home
     platform: state
     to: not_home

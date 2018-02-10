@@ -1,0 +1,68 @@
+weather:
+  name: Weather
+  view: yes
+  icon: mdi:weather-partlycloudy
+  entities:
+    - sensor.bedroom_humidity
+    - sensor.bedroom_temperature
+    - sensor.living_room_humidity
+    - sensor.living_room_temperature
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_precip
+    - sensor.dark_sky_apparent_temperature
+    - sun.sun
+
+media:
+  name: Media
+  view: yes
+  icon: mdi:play-box-outline
+  entities:
+    - media_player.mpd_living_room
+    - media_player.mpd_bed_room
+    - media_player.roku_5f45cm000620
+    - media_player.roku_yr00aa293226
+    - script.brook
+    - script.tng
+    - script.fire
+    - script.waves
+    - script.stop_sound
+
+lights:
+  name: Lights
+  view: yes
+  icon: mdi:lightbulb-on-outline
+  entities:
+    - group.all_lights
+    - script.turn_off_lights
+
+switches:
+  name: Switches
+  view: yes
+  icon: mdi:power-plug
+  entities:
+    - group.all_switches
+
+system:
+  name: System Health
+  view: yes
+  icon: mdi:desktop-classic
+  entities:
+    - sensor.average_load_1m
+    - sensor.average_load_15m
+    - sensor.disk_used_
+    - sensor.ram_used
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.speedtest_ping
+    - sensor.ipv4_address_wlan0
+    - sensor.since_last_boot
+    - sensor.ups_input_voltage
+    - sensor.ups_load
+    - sensor.ups_battery
+
+people:
+  name: People
+  view: no
+  entities:
+    - device_tracker.androide3fba1225244fe27
+    - device_tracker.b8634d4ac717
