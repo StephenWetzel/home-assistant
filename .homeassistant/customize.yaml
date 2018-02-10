@@ -5,6 +5,9 @@ device_tracker.androide3fba1225244fe27:
   friendly_name: Steve
 device_tracker.000d6782445e:
   hidden: true
+device_tracket.98b6e9987760:
+  friendly_name: Thinkpad
+  hidden: true
 device_tracker.hassbian:
   hidden: true
 device_tracker.hs100:

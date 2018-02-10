@@ -123,6 +123,12 @@ sensor:
     username: !secret ups_username
     password: !secret ups_password
 
+  - platform: pi_hole
+    monitored_conditions:
+      - ads_blocked_today
+      - dns_queries_today
+      - ads_percentage_today
+
 device_tracker:
   - platform: ddwrt
     host: 192.168.1.1

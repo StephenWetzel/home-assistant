@@ -34,6 +34,7 @@ lights:
   entities:
     - group.all_lights
     - script.turn_off_lights
+    - script.turn_on_lights
 
 switches:
   name: Switches
@@ -59,6 +60,9 @@ system:
     - sensor.ups_input_voltage
     - sensor.ups_load
     - sensor.ups_battery
+    - sensor.pihole_dns_queries_today
+    - sensor.pihole_ads_blocked_today
+    - sensor.pihole_ads_percentage_blocked_today
 
 people:
   name: People

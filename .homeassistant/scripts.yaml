@@ -5,6 +5,13 @@ turn_off_lights:
       brightness: 0
     service: light.turn_on
 
+turn_on_lights:
+  alias: Turn on all lights
+  sequence:
+  - data:
+      brightness: 100
+    service: light.turn_on
+
 stop_sound:
   alias: Stop All Sound
   sequence:
