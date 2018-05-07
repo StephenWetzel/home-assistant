@@ -90,3 +90,30 @@
       transition: 5
     service: light.turn_on
 
+- alias: Turn off cameras
+  trigger:
+  - entity_id: group.people
+    platform: state
+    from: not_home
+    to: home
+  action:
+  - service: switch.turn_off
+    entity_id: switch.jesse_room_camera
+  - service: switch.turn_off
+    entity_id: switch.living_room_camera
+  - service: switch.turn_off
+    entity_id: switch.dining_room_camera
+
+- alias: Turn on cameras
+  trigger:
+  - entity_id: group.people
+    platform: state
+    from: home
+    to: not_home
+  action:
+  - service: switch.turn_on
+    entity_id: switch.jesse_room_camera
+  - service: switch.turn_on
+    entity_id: switch.living_room_camera
+  - service: switch.turn_on
+    entity_id: switch.dining_room_camera

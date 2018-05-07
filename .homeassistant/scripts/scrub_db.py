@@ -9,7 +9,19 @@ Base.prepare(engine, reflect=True)
 State = Base.classes.states
 Event = Base.classes.events
 
+def scrub_table_unknowns(session, entity_id, state = 'unknown'):
+    res = session.query(State).filter_by(state = state)
+    print("Entity {} has {} rows with state '{}'".format(entity_id, res.count(), state))
+    if res.count() < 1: return
+    for row in res:
+        print("Unknown: {}".format(row.state))
+    ans = input("Do you want to delete these {} rows [y/N]? ".format(res.count()))
+    if ans == 'y':
+        res.delete(synchronize_session=False)
+        session.commit()
+
 def scrub_table(session, entity_id, offset = 10, min_rows = 100, padding = 5):
+    scrub_table_unknowns(session, entity_id)
     res = session.query(State).filter_by(entity_id = entity_id)
     print("Entity {} has {} rows".format(entity_id, res.count()))
     if res.count() < min_rows:

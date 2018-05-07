@@ -42,6 +42,8 @@ switches:
   icon: mdi:power-plug
   entities:
     - group.all_switches
+    - script.turn_off_cameras
+    - script.turn_on_cameras
 
 system:
   name: System Health

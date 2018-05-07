@@ -80,20 +80,20 @@ sensor:
 
   - platform: dht
     sensor: DHT22
-    name: "Bedroom"
+    name: "Living Room"
     pin: 23
     monitored_conditions:
       - temperature
       - humidity
 
   - platform: mqtt
-    name: "Living Room Temperature"
+    name: "Bedroom Temperature"
     unit_of_measurement: '°F'
     value_template: '{{ value_json.temperature }}'
     state_topic: "home/living_room/temperature"
 
   - platform: mqtt
-    name: "Living Room Humidity"
+    name: "Bedroom Humidity"
     unit_of_measurement: '%'
     value_template: '{{ value_json.humidity }}'
     state_topic: "home/living_room/temperature"
@@ -130,15 +130,19 @@ sensor:
       - ads_percentage_today
 
 device_tracker:
-  - platform: ddwrt
-    host: 192.168.1.1
-    username: !secret ddwrt_username
-    password: !secret ddwrt_password
+  - platform: unifi_direct
+    host: 192.168.1.17
+    username: !secret unifi_username
+    password: !secret unifi_password
 
 
 switch:
   - platform: tplink
-    host: 192.168.1.228
+    host: 192.168.1.16
+  - platform: tplink
+    host: 192.168.1.22
+  - platform: tplink
+    host: 192.168.1.31
 
 
 recorder:
@@ -176,6 +180,7 @@ apcupsd:
 usps:
   username: !secret usps_username
   password: !secret usps_password
+  driver: 'phantomjs'
 
 camera:
   - platform: usps

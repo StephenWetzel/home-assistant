@@ -12,6 +12,26 @@ turn_on_lights:
       brightness: 100
     service: light.turn_on
 
+turn_off_cameras:
+  alias: Turn off cameras
+  sequence:
+  - service: switch.turn_off
+    entity_id: switch.jesse_room_camera
+  - service: switch.turn_off
+    entity_id: switch.living_room_camera
+  - service: switch.turn_off
+    entity_id: switch.dining_room_camera
+
+turn_on_cameras:
+  alias: Turn on cameras
+  sequence:
+  - service: switch.turn_on
+    entity_id: switch.jesse_room_camera
+  - service: switch.turn_on
+    entity_id: switch.living_room_camera
+  - service: switch.turn_on
+    entity_id: switch.dining_room_camera
+
 stop_sound:
   alias: Stop All Sound
   sequence:
