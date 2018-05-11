@@ -1,12 +1,12 @@
-light.sengled_z01a19nae26_0301dbb2_1:
-  platform: zha
-  unique_id: b0:ce:18:14:03:01:db:b2-1
+media_player.plex_web_firefox:
+  name:
+  platform: plex
+  unique_id: fzm7978uxgt22upqqu5ztly9
 light.sengled_e11g13_0306f75b_1:
+  name:
   platform: zha
   unique_id: b0:ce:18:14:03:06:f7:5b-1
-switch.centralite_3210l_0ca6e973_1:
+light.sengled_z01a19nae26_0301dbb2_1:
+  name:
   platform: zha
-  unique_id: 00:0d:6f:00:0c:a6:e9:73-1
-switch.centralite_3210l_0ca5df0e_1:
-  platform: zha
-  unique_id: 00:0d:6f:00:0c:a5:df:0e-1
+  unique_id: b0:ce:18:14:03:01:db:b2-1

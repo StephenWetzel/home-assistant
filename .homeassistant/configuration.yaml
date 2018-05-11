@@ -15,7 +15,7 @@ config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  # api_password: !secret http_password
+  api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
@@ -60,10 +60,6 @@ zha:
   usb_path: /dev/ttyUSB1
   database_path: /home/homeassistant/.homeassistant/zigbee.db
 
-binary_sensor:
-  - platform: iss
-
-
 sensor:
   - platform: darksky
     api_key: !secret dark_sky_key
@@ -90,13 +86,25 @@ sensor:
     name: "Bedroom Temperature"
     unit_of_measurement: '°F'
     value_template: '{{ value_json.temperature }}'
-    state_topic: "home/living_room/temperature"
+    state_topic: "home/bedroom/temperature"
 
   - platform: mqtt
     name: "Bedroom Humidity"
     unit_of_measurement: '%'
     value_template: '{{ value_json.humidity }}'
-    state_topic: "home/living_room/temperature"
+    state_topic: "home/bedroom/temperature"
+
+  - platform: mqtt
+    name: "Basement Temperature"
+    unit_of_measurement: '°F'
+    value_template: '{{ value_json.temperature }}'
+    state_topic: "home/basement/temperature"
+
+  - platform: mqtt
+    name: "Basement Humidity"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json.humidity }}'
+    state_topic: "home/basement/temperature"
 
   - platform: speedtest
     monitored_conditions:
@@ -119,15 +127,18 @@ sensor:
         arg: wlan0
       - type: since_last_boot
 
-  - platform: ups
-    username: !secret ups_username
-    password: !secret ups_password
+  # - platform: pi_hole
+  #   monitored_conditions:
+  #     - ads_blocked_today
+  #     - dns_queries_today
+  #     - ads_percentage_today
 
-  - platform: pi_hole
-    monitored_conditions:
-      - ads_blocked_today
-      - dns_queries_today
-      - ads_percentage_today
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    # If errors occur, remove degree symbol below
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) | round(1) }}'
 
 device_tracker:
   - platform: unifi_direct
@@ -165,23 +176,16 @@ recorder:
       - sensor.living_room_temperature
       - sensor.bedroom_humidity
       - sensor.bedroom_temperature
+      - sensor.basement_humidity
+      - sensor.basement_temperature
 
 media_player:
   - platform: mpd
-    host: localhost
+    host: 192.168.1.148
     name: mpd_bed_room
   - platform: mpd
-    name: mpd_living_room
+    name: mpd_office
     host: 192.168.1.138
 
 apcupsd:
   host: 192.168.1.138
-
-usps:
-  username: !secret usps_username
-  password: !secret usps_password
-  driver: 'phantomjs'
-
-camera:
-  - platform: usps
-    scan_interval: 15

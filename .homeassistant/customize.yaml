@@ -39,12 +39,14 @@ device_tracker.b827eb308efb:
   hidden: true
 group.all_lights:
   hidden: false
-media_player.mpd_living_room:
-  friendly_name: Living Room MPD
+media_player.mpd_office:
+  friendly_name: Office MPD
 media_player.mpd_bed_room:
   friendly_name: Bedroom MPD
 media_player.roku_5f45cm000620:
   friendly_name: Living Room Roku
+media_player.roku_3__1818_green:
+  friendly_name: Jesse's Roku
 media_player.roku_yr00aa293226:
   friendly_name: Bedroom Roku
 
