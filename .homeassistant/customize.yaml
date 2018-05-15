@@ -26,10 +26,6 @@ sensor.dht_sensor_humidity:
   friendly_name: DHT Humidity
 sensor.dht_sensor_temperature:
   friendly_name: DHT Temperature
-light.sengled_e11g13_0306f75b_1:
-  friendly_name: sengled standard 1
-light.sengled_z01a19nae26_0301dbb2_1:
-  friendly_name: sengled temp 1
 device_tracker.d02598b8fe77:
   friendly_name: Melanie-Old
   hidden: true

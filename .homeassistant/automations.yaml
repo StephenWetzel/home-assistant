@@ -100,7 +100,7 @@
   - service: switch.turn_off
     entity_id: switch.jesse_room_camera
   - service: switch.turn_off
-    entity_id: switch.living_room_camera
+    entity_id: switch.downstairs_cameras
   - service: switch.turn_off
     entity_id: switch.dining_room_camera
 
@@ -114,6 +114,6 @@
   - service: switch.turn_on
     entity_id: switch.jesse_room_camera
   - service: switch.turn_on
-    entity_id: switch.living_room_camera
+    entity_id: switch.downstairs_cameras
   - service: switch.turn_on
     entity_id: switch.dining_room_camera
