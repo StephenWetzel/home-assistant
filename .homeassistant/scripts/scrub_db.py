@@ -1,8 +1,18 @@
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
+import argparse
 
-engine = create_engine('sqlite:///../home-assistant_v2.db', echo=False)
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-f", "--force", help="Force deletions, do not ask", action="store_true")
+parser.add_argument("-d", "--dry", help="Perform a dry run, do not delete any rows", action="store_true")
+args = parser.parse_args()
+if args.force:
+    print("Forcing deletions")
+
+
+engine = create_engine('sqlite:////home/homeassistant/.homeassistant/home-assistant_v2.db', echo=False)
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 
@@ -42,6 +52,12 @@ def scrub_table(session, entity_id, offset = 10, min_rows = 100, padding = 5):
         print("Too low: {}".format(row.state))
         delete_count += 1
     if delete_count == 0: return
+    if args.dry: return
+    if args.force:
+        res.filter(State.state > high_cut_off).delete(synchronize_session=False)
+        res.filter(State.state < low_cut_off).delete(synchronize_session=False)
+        session.commit()
+        return
     ans = input("Do you want to delete these {} rows [y/N]? ".format(delete_count))
     if ans == 'y':
         res.filter(State.state > high_cut_off).delete(synchronize_session=False)
