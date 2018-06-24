@@ -1,16 +1,34 @@
-turn_off_lights:
+turn_off_the_lights:
   alias: Turn off all lights
   sequence:
-  - data:
-      brightness: 0
-    service: light.turn_on
+  - service: light.turn_off
+    entity_id: light.sengled_e11g13_0306f75b_1
+  - service: light.turn_off
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
 
-turn_on_lights:
+turn_on_the_lights:
   alias: Turn on all lights
   sequence:
-  - data:
-      brightness: 100
-    service: light.turn_on
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_0306f75b_1
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+
+turn_off_the_fans:
+  alias: Turn off all fans
+  sequence:
+  - service: switch.turn_off
+    entity_id: switch.centralite_3210l_0ca5df0e_1
+  - service: switch.turn_off
+    entity_id: switch.extra_plug
+
+turn_on_the_fans:
+  alias: Turn on all fans
+  sequence:
+  - service: switch.turn_on
+    entity_id: switch.centralite_3210l_0ca5df0e_1
+  - service: switch.turn_on
+    entity_id: switch.extra_plug
 
 turn_off_cameras:
   alias: Turn off cameras
@@ -48,7 +66,7 @@ stop_sound:
     data:
       entity_id: media_player.mpd_living_room
 
-tng:
+star_trek:
   alias: Ambient - TNG
   sequence:
   - service: media_player.play_media

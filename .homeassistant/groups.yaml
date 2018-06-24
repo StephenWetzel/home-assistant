@@ -5,10 +5,13 @@ weather:
   entities:
     - sensor.bedroom_humidity
     - sensor.bedroom_temperature
+    - sensor.bedroom_light
     - sensor.living_room_humidity
     - sensor.living_room_temperature
+    - sensor.living_room_light
     - sensor.basement_humidity
     - sensor.basement_temperature
+    - sensor.basement_light
     - sensor.dark_sky_summary
     - sensor.dark_sky_precip
     - sensor.dark_sky_apparent_temperature
@@ -25,7 +28,7 @@ media:
     - media_player.roku_yr00aa293226
     - media_player.roku_3__1818_green
     - script.brook
-    - script.tng
+    - script.star_trek
     - script.fire
     - script.waves
     - script.stop_sound
@@ -36,8 +39,8 @@ lights:
   icon: mdi:lightbulb-on-outline
   entities:
     - group.all_lights
-    - script.turn_off_lights
-    - script.turn_on_lights
+    - script.turn_off_the_lights
+    - script.turn_on_the_lights
 
 switches:
   name: Switches

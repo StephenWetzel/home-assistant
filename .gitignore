@@ -6,3 +6,5 @@
 .HA_VERSION
 *secrets.yaml
 */tts/
+fullchain.pem
+.ios.conf

@@ -16,6 +16,9 @@ config:
 http:
   # Secrets are defined in the file secrets.yaml
   api_password: !secret http_password
+  ssl_certificate: /home/homeassistant/bin/dehydrated/certs/***REMOVED***/fullchain.pem
+  ssl_key: /home/homeassistant/bin/dehydrated/certs/***REMOVED***/privkey.pem
+  base_url: ***REMOVED***:8123
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
@@ -83,6 +86,12 @@ sensor:
       - humidity
 
   - platform: mqtt
+    name: "Living Room Light"
+    unit_of_measurement: 'lux'
+    value_template: '{{ value_json.light }}'
+    state_topic: "home/living_room/light"
+
+  - platform: mqtt
     name: "Bedroom Temperature"
     unit_of_measurement: '°F'
     value_template: '{{ value_json.temperature }}'
@@ -95,6 +104,12 @@ sensor:
     state_topic: "home/bedroom/temperature"
 
   - platform: mqtt
+    name: "Bedroom Light"
+    unit_of_measurement: 'lux'
+    value_template: '{{ value_json.light }}'
+    state_topic: "home/bedroom/light"
+
+  - platform: mqtt
     name: "Basement Temperature"
     unit_of_measurement: '°F'
     value_template: '{{ value_json.temperature }}'
@@ -105,6 +120,12 @@ sensor:
     unit_of_measurement: '%'
     value_template: '{{ value_json.humidity }}'
     state_topic: "home/basement/temperature"
+
+  - platform: mqtt
+    name: "Basement Light"
+    unit_of_measurement: 'lux'
+    value_template: '{{ value_json.light }}'
+    state_topic: "home/basement/light"
 
   - platform: speedtest
     monitored_conditions:
@@ -137,7 +158,7 @@ sensor:
     name: CPU Temperature
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     # If errors occur, remove degree symbol below
-    unit_of_measurement: "°C"
+    unit_of_measurement: "°C CPU"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
 
 device_tracker:
@@ -149,9 +170,9 @@ device_tracker:
 
 switch:
   - platform: tplink
-    host: 192.168.1.16
-  - platform: tplink
     host: 192.168.1.22
+  - platform: tplink
+    host: 192.168.1.36
   - platform: tplink
     host: 192.168.1.31
 
@@ -174,10 +195,14 @@ recorder:
       - sensor.dht_sensor_temperature
       - sensor.living_room_humidity
       - sensor.living_room_temperature
+      - sensor.living_room_light
       - sensor.bedroom_humidity
       - sensor.bedroom_temperature
+      - sensor.bedroom_light
       - sensor.basement_humidity
       - sensor.basement_temperature
+      - sensor.basement_light
+      - sensor.cpu_temperature
 
 media_player:
   - platform: mpd
@@ -189,3 +214,32 @@ media_player:
 
 apcupsd:
   host: 192.168.1.138
+
+# shell_command:
+#   scrub_db: 'python /home/homeassistant/.homeassistant/python_scripts/scrub_db.py'
+#   test: 'echo hi'
+
+alexa:
+
+intent_script:
+  RunScriptIntent:
+    action:
+      service: script.turn_on
+      data_template:
+        entity_id: script.{{ Script | replace(" ", "_") }}
+    speech:
+      type: plain
+      text: OK
+
+
+
+# intent_script:
+#   ActivateSceneIntent:
+#     action:
+#       service: scene.turn_on
+#       data_template:
+#         entity_id: scene.{{ Scene | replace(" ", "_") }}
+#     speech:
+#       type: plain
+#       text: OK
+

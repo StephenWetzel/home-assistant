@@ -25,12 +25,17 @@ def scrub_table_unknowns(session, entity_id, state = 'unknown'):
     if res.count() < 1: return
     for row in res:
         print("Unknown: {}".format(row.state))
+    if args.dry: return
+    if args.force:
+        res.delete(synchronize_session=False)
+        session.commit()
+        return
     ans = input("Do you want to delete these {} rows [y/N]? ".format(res.count()))
     if ans == 'y':
         res.delete(synchronize_session=False)
         session.commit()
 
-def scrub_table(session, entity_id, offset = 10, min_rows = 100, padding = 5):
+def scrub_table(session, entity_id, offset = 25, min_rows = 100, padding = 5):
     scrub_table_unknowns(session, entity_id)
     res = session.query(State).filter_by(entity_id = entity_id)
     print("Entity {} has {} rows".format(entity_id, res.count()))
