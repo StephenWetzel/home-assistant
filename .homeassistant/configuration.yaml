@@ -71,11 +71,11 @@ sensor:
       - precip_type
       - apparent_temperature
 
-  - platform: apcupsd
-    resources:
-      - bcharge
-      - linev
-      - loadpct
+  # - platform: apcupsd
+  #   resources:
+  #     - bcharge
+  #     - linev
+  #     - loadpct
 
   - platform: dht
     sensor: DHT22
@@ -212,8 +212,8 @@ media_player:
     name: mpd_office
     host: 192.168.1.138
 
-apcupsd:
-  host: 192.168.1.138
+# apcupsd:
+#   host: 192.168.1.138
 
 # shell_command:
 #   scrub_db: 'python /home/homeassistant/.homeassistant/python_scripts/scrub_db.py'
@@ -230,6 +230,11 @@ intent_script:
     speech:
       type: plain
       text: OK
+  GetSensorIntent:
+    speech:
+      type: plain
+      # text: Sensor is {{ "states.sensor." + Sensor | replace(" ", "_") }}
+      text: Sensor is {{ states('sensor.'  + Sensor | replace(" ", "_")) }}
 
 
 
