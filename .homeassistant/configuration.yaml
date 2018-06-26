@@ -212,6 +212,18 @@ media_player:
     name: mpd_office
     host: 192.168.1.138
 
+notify:
+  - platform: xmpp
+    name: steve_hangouts
+    sender: !secret xmpp_username
+    password: !secret xmpp_password
+    recipient: !secret steve_gmail_username
+  - platform: xmpp
+    name: melanie_hangouts
+    sender: !secret xmpp_username
+    password: !secret xmpp_password
+    recipient: !secret melanie_gmail_username
+
 # apcupsd:
 #   host: 192.168.1.138
 

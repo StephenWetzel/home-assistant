@@ -66,21 +66,6 @@
       brightness: 255
       transition: 5
 
-- alias: Leave - turn off light
-  id: '1510275830231'
-  condition: []
-  trigger:
-  - entity_id: group.people
-    from: home
-    platform: state
-    to: not_home
-  action:
-  - data:
-      brightness: 0
-      entity_id: light.sengled_e11g13_0306f75b_1
-      transition: 5
-    service: light.turn_on
-
 - alias: Come home
   trigger:
   - entity_id: group.people
@@ -100,7 +85,7 @@
   action:
   - service: script.turn_on_cameras
   - service: script.turn_off_the_fans
-  - service: script.turn_on_the_lights
+  - service: script.turn_off_the_lights
 
 - alias: Basement Light Left On
   trigger:
@@ -110,7 +95,7 @@
     for:
       hours: 1
   action:
-  - service: notify.notify
+  - service: notify.steve_hangouts
     data:
-      message: The basement light is on
-  - service: script.turn_on_the_lights
+      message: The basement lights are on
+  - service: script.flash_the_lights

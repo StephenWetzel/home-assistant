@@ -15,7 +15,7 @@ switch.centralite_3210l_0ca6e973_1:
   platform: zha
   unique_id: 00:0d:6f:00:0c:a6:e9:73-1
 switch.centralite_3210l_0ca5df0e_1:
-  name: Bedroom Fan
+  name: Living Room Switch
   platform: zha
   unique_id: 00:0d:6f:00:0c:a5:df:0e-1
 media_player.roku_premiere__yr00aa293226:
