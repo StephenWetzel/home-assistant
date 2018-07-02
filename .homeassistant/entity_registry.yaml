@@ -3,11 +3,11 @@ media_player.plex_web_firefox:
   platform: plex
   unique_id: fzm7978uxgt22upqqu5ztly9
 light.sengled_e11g13_0306f75b_1:
-  name: Living Room Light
+  name: Living Room Light 1
   platform: zha
   unique_id: b0:ce:18:14:03:06:f7:5b-1
 light.sengled_z01a19nae26_0301dbb2_1:
-  name: Bedroom Light
+  name: Bedroom Light 1
   platform: zha
   unique_id: b0:ce:18:14:03:01:db:b2-1
 switch.centralite_3210l_0ca6e973_1:
@@ -22,3 +22,11 @@ media_player.roku_premiere__yr00aa293226:
   name:
   platform: plex
   unique_id: 5ea95f3ac9daeb1103f563be4927cf9b
+light.sengled_e11g13_030eb7c8_1:
+  name: Bedroom Light 2
+  platform: zha
+  unique_id: b0:ce:18:14:03:0e:b7:c8-1
+light.sengled_e11g13_030eb42b_1:
+  name: Bedroom Light 3
+  platform: zha
+  unique_id: b0:ce:18:14:03:0e:b4:2b-1

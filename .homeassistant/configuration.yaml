@@ -248,7 +248,7 @@ intent_script:
       # text: Sensor is {{ "states.sensor." + Sensor | replace(" ", "_") }}
       text: Sensor is {{ states('sensor.'  + Sensor | replace(" ", "_")) }}
 
-
+emulated_hue:
 
 # intent_script:
 #   ActivateSceneIntent:
@@ -259,4 +259,17 @@ intent_script:
 #     speech:
 #       type: plain
 #       text: OK
+
+light:
+  - platform: group
+    name: Bedroom Lights
+    entities:
+      - light.sengled_z01a19nae26_0301dbb2_1
+      - light.sengled_e11g13_030eb7c8_1
+      - light.sengled_e11g13_030eb42b_1
+  - platform: group
+    name: Living Room Lights
+    entities:
+      - light.sengled_e11g13_0306f75b_1
+
 

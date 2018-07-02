@@ -1,16 +1,16 @@
-- alias: Wakeup - Slowly Turn Off Light
-  id: '1510113291429'
-  trigger:
-  - platform: time
-    at: 07:00:00
-  condition: []
-  action:
-    - service: light.turn_on
-      entity_id: light.sengled_z01a19nae26_0301dbb2_1
-      data:
-        brightness: 0
-        kelvin: 2700
-        transition: 10
+# - alias: Wakeup - Slowly Turn Off Light
+#   id: '1510113291429'
+#   trigger:
+#   - platform: time
+#     at: 07:00:00
+#   condition: []
+#   action:
+#     - service: light.turn_on
+#       entity_id: light.sengled_z01a19nae26_0301dbb2_1
+#       data:
+#         brightness: 0
+#         kelvin: 2700
+#         transition: 10
 
 - alias: Wakeup - Slowly Turn On Light
   id: '1510114284366'
@@ -39,13 +39,25 @@
       brightness: 255
       kelvin: 6500
       transition: 600
-  - delay: '01:30:00'
+  - delay: '00:05:00'
   - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_e11g13_030eb7c8_1
     data:
-      brightness: 0
-      kelvin: 2700
-      transition: 10
+      brightness: 255
+      transition: 600
+  - delay: '00:05:00'
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030eb42b_1
+    data:
+      brightness: 255
+      transition: 600
+  - delay: '01:00:00'
+  - service: light.turn_off
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+  - service: light.turn_off
+    entity_id: light.sengled_e11g13_030eb7c8_1
+  - service: light.turn_off
+    entity_id: light.sengled_e11g13_030eb42b_1
 
 - alias: Home - Turn on light
   id: '1510273891568'
@@ -99,3 +111,36 @@
     data:
       message: The basement lights are on
   - service: script.flash_the_lights
+
+- alias: Watch TV Living Room
+  trigger:
+    - entity_id: media_player.roku_yr00aa293226
+      platform: state
+      to: 'playing'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.extra_plug
+
+- alias: Dusk - Turn on light
+  trigger:
+  - entity_id: sensor.living_room_light
+    platform: numeric_state
+    below: 2
+    for:
+      minutes: 10
+  condition:
+  - entity_id: group.people
+    condition: state
+    state: home
+  action:
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_0306f75b_1
+    data:
+      brightness: 255
+      transition: 15
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
+      brightness: 255
+      transition: 15
+
