@@ -16,9 +16,9 @@ config:
 http:
   # Secrets are defined in the file secrets.yaml
   api_password: !secret http_password
-  ssl_certificate: /home/homeassistant/bin/dehydrated/certs/***REMOVED***/fullchain.pem
-  ssl_key: /home/homeassistant/bin/dehydrated/certs/***REMOVED***/privkey.pem
-  base_url: ***REMOVED***:8123
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  base_url: !secret base_url
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
