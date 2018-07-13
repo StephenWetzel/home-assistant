@@ -1,32 +1,105 @@
 media_player.plex_web_firefox:
+  config_entry_id:
   name:
   platform: plex
   unique_id: fzm7978uxgt22upqqu5ztly9
 light.sengled_e11g13_0306f75b_1:
+  config_entry_id:
   name: Living Room Light 1
   platform: zha
   unique_id: b0:ce:18:14:03:06:f7:5b-1
 light.sengled_z01a19nae26_0301dbb2_1:
+  config_entry_id:
   name: Bedroom Light 1
   platform: zha
   unique_id: b0:ce:18:14:03:01:db:b2-1
 switch.centralite_3210l_0ca6e973_1:
+  config_entry_id:
   name: Jesse's Switch
   platform: zha
   unique_id: 00:0d:6f:00:0c:a6:e9:73-1
 switch.centralite_3210l_0ca5df0e_1:
+  config_entry_id:
   name: Living Room Switch
   platform: zha
   unique_id: 00:0d:6f:00:0c:a5:df:0e-1
 media_player.roku_premiere__yr00aa293226:
+  config_entry_id:
   name:
   platform: plex
   unique_id: 5ea95f3ac9daeb1103f563be4927cf9b
 light.sengled_e11g13_030eb7c8_1:
+  config_entry_id:
   name: Bedroom Light 2
   platform: zha
   unique_id: b0:ce:18:14:03:0e:b7:c8-1
 light.sengled_e11g13_030eb42b_1:
+  config_entry_id:
   name: Bedroom Light 3
   platform: zha
   unique_id: b0:ce:18:14:03:0e:b4:2b-1
+sensor.sengled_e11g13_030eb7c8_1_1794:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: b0:ce:18:14:03:0e:b7:c8-1-1794
+sensor.sengled_e11g13_030eb42b_1_1794:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: b0:ce:18:14:03:0e:b4:2b-1-1794
+sensor.sengled_z01a19nae26_0301dbb2_1_1794:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: b0:ce:18:14:03:01:db:b2-1-1794
+sensor.sengled_e11g13_0306f75b_1_1794:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: b0:ce:18:14:03:06:f7:5b-1-1794
+sensor.centralite_3210l_0ca6e973_1_1794:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: 00:0d:6f:00:0c:a6:e9:73-1-1794
+sensor.centralite_3210l_0ca6e973_1_2820:
+  config_entry_id:
+  name: Jesse's Outlet
+  platform: zha
+  unique_id: 00:0d:6f:00:0c:a6:e9:73-1-2820
+sensor.centralite_3210l_0ca5df0e_1_2820:
+  config_entry_id:
+  name: Bedroom Outlet
+  platform: zha
+  unique_id: 00:0d:6f:00:0c:a5:df:0e-1-2820
+sensor.centralite_3210l_0ca5df0e_1_1794:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: 00:0d:6f:00:0c:a5:df:0e-1-1794
+media_player.roku_3__1818_green:
+  config_entry_id:
+  name:
+  platform: roku
+  unique_id: 4124DT000853
+media_player.roku_5f45cm000620:
+  config_entry_id:
+  name:
+  platform: roku
+  unique_id: 5F45CM000620
+media_player.roku_yr00aa293226:
+  config_entry_id:
+  name:
+  platform: roku
+  unique_id: YR00AA293226
+light.sengled_e11g13_030c7069_1:
+  config_entry_id:
+  name: Living Room Light 2
+  platform: zha
+  unique_id: b0:ce:18:14:03:0c:70:69-1
+sensor.sengled_e11g13_030c7069_1_1794:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: b0:ce:18:14:03:0c:70:69-1-1794

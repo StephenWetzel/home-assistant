@@ -6,6 +6,10 @@ turn_off_the_lights:
     data:
       transition: 5
   - service: light.turn_off
+    entity_id: light.sengled_e11g13_030c7069_1
+    data:
+      transition: 5
+  - service: light.turn_off
     entity_id: light.sengled_z01a19nae26_0301dbb2_1
     data:
       transition: 5
@@ -23,6 +27,10 @@ turn_on_the_lights:
   sequence:
   - service: light.turn_on
     entity_id: light.sengled_e11g13_0306f75b_1
+    data:
+      transition: 5
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030c7069_1
     data:
       transition: 5
   - service: light.turn_on

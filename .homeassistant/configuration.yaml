@@ -130,8 +130,6 @@ sensor:
   - platform: speedtest
     monitored_conditions:
       - ping
-      - download
-      - upload
 
   - platform: yr
 
@@ -186,9 +184,7 @@ recorder:
       - media_player
       - switch
     entities:
-      - sensor.speedtest_upload
       - sensor.speedtest_ping
-      - sensor.speedtest_download
       - sensor.ram_used
       - sensor.disk_used_
       - sensor.dht_sensor_humidity
@@ -203,6 +199,8 @@ recorder:
       - sensor.basement_temperature
       - sensor.basement_light
       - sensor.cpu_temperature
+      - sensor.centralite_3210l_0ca5df0e_1_2820
+      - sensor.centralite_3210l_0ca6e973_1_2820
 
 media_player:
   - platform: mpd
@@ -271,5 +269,6 @@ light:
     name: Living Room Lights
     entities:
       - light.sengled_e11g13_0306f75b_1
+      - light.sengled_e11g13_030c7069_1
 
 
