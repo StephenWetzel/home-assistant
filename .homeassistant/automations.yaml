@@ -69,30 +69,6 @@
   - service: light.turn_off
     entity_id: light.sengled_e11g13_030eb42b_1
 
-- alias: Home - Turn on light
-  id: '1510273891568'
-  trigger:
-  - entity_id: group.people
-    platform: state
-    from: not_home
-    to: home
-  condition:
-  - below: '1'
-    condition: numeric_state
-    entity_id: sun.sun
-    value_template: '{{ state.attributes.elevation }}'
-  action:
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
-    data:
-      brightness: 200
-      transition: 5
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_030c7069_1
-    data:
-      brightness: 200
-      transition: 5
-
 - alias: Come home
   trigger:
   - entity_id: group.people
@@ -136,49 +112,73 @@
     - service: switch.turn_off
       entity_id: switch.extra_plug
 
-- alias: Dusk - Turn on light
+- alias: Dusk
   trigger:
   - entity_id: sensor.living_room_light
     platform: numeric_state
-    below: 10
+    below: 8
     for:
-      minutes: 5
+      minutes: 10
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.light_outside
+
+- alias: Dawn
+  trigger:
+  - entity_id: sensor.living_room_light
+    platform: numeric_state
+    above: 100
+    for:
+      minutes: 10
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.light_outside
+
+- alias: Dusk - Turn on light
+  trigger:
+  - entity_id: input_boolean.light_outside
+    platform: state
+    to: 'off'
   condition:
   - entity_id: group.people
     condition: state
     state: home
   action:
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
-    data:
-      brightness: 0
-      transition: 3
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_030c7069_1
-    data:
-      brightness: 0
-      transition: 3
-  - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
-    data:
-      brightness: 0
-      kelvin: 2700
-      transition: 3
-  - delay: '00:00:10'
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
-    data:
-      brightness: 200
-      transition: 15
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_030c7069_1
-    data:
-      brightness: 200
-      transition: 15
-  - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
-    data:
-      brightness: 255
-      kelvin: 2700
-      transition: 15
+  - service: script.turn_on_some_lights
+
+- alias: Home - Turn on light
+  id: '1510273891568'
+  trigger:
+  - entity_id: group.people
+    platform: state
+    from: not_home
+    to: home
+  condition:
+    condition: state
+    entity_id: input_boolean.light_outside
+    state: 'off'
+  # condition:
+  # - below: '1'
+  #   condition: numeric_state
+  #   entity_id: sun.sun
+  #   value_template: '{{ state.attributes.elevation }}'
+  action:
+  - service: script.turn_on_some_lights
+
+
+# This could interfere with the wakeup script
+# Could use another bool to track if wakeup is currently running
+# - alias: Dawn - Turn off light
+#   trigger:
+#   - entity_id: sensor.living_room_light
+#     platform: numeric_state
+#     below: 10
+#     for:
+#       minutes: 5
+#   action:
+#   - service: script.turn_off_the_lights
+
+
 
