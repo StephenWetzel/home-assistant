@@ -22,6 +22,8 @@ device_tracker.000d677d5c5a:
   hidden: true
 device_tracker.8c0f6f3303f1:
   hidden: true
+device_tracker.amazon2e2addd61:
+  hidden: true
 sensor.dht_sensor_humidity:
   friendly_name: DHT Humidity
 sensor.dht_sensor_temperature:
@@ -40,10 +42,11 @@ media_player.mpd_office:
 media_player.mpd_bed_room:
   friendly_name: Bedroom MPD
 media_player.roku_5f45cm000620:
-  friendly_name: Living Room Roku
+  friendly_name: Bedroom Roku
 media_player.roku_3__1818_green:
   friendly_name: Jesse's Roku
 media_player.roku_yr00aa293226:
   friendly_name: Living Room Roku
-
+switch.extra_plug:
+  friendly_name: Living Room Fan
 

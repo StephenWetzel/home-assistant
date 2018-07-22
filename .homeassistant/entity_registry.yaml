@@ -15,12 +15,12 @@ light.sengled_z01a19nae26_0301dbb2_1:
   unique_id: b0:ce:18:14:03:01:db:b2-1
 switch.centralite_3210l_0ca6e973_1:
   config_entry_id:
-  name: Jesse's Switch
+  name: Curling Iron Outlet
   platform: zha
   unique_id: 00:0d:6f:00:0c:a6:e9:73-1
 switch.centralite_3210l_0ca5df0e_1:
   config_entry_id:
-  name: Living Room Switch
+  name: Bedroom Fan
   platform: zha
   unique_id: 00:0d:6f:00:0c:a5:df:0e-1
 media_player.roku_premiere__yr00aa293226:
@@ -65,7 +65,7 @@ sensor.centralite_3210l_0ca6e973_1_1794:
   unique_id: 00:0d:6f:00:0c:a6:e9:73-1-1794
 sensor.centralite_3210l_0ca6e973_1_2820:
   config_entry_id:
-  name: Jesse's Outlet
+  name: Curling Iron Outlet
   platform: zha
   unique_id: 00:0d:6f:00:0c:a6:e9:73-1-2820
 sensor.centralite_3210l_0ca5df0e_1_2820:

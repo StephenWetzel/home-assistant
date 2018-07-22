@@ -46,6 +46,43 @@ turn_on_the_lights:
     data:
       transition: 5
 
+turn_on_some_lights:
+  alias: Turn on some lights
+  sequence:
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_0306f75b_1
+    data:
+      brightness: 0
+      transition: 1
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030c7069_1
+    data:
+      brightness: 0
+      transition: 1
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
+      brightness: 0
+      kelvin: 2700
+      transition: 1
+  - delay: '00:00:10'
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_0306f75b_1
+    data:
+      brightness: 200
+      transition: 15
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030c7069_1
+    data:
+      brightness: 200
+      transition: 15
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
+      brightness: 255
+      kelvin: 2700
+      transition: 15
+
 flash_the_lights:
   alias: Flash all lights
   sequence:
@@ -91,6 +128,18 @@ turn_on_the_fans:
     entity_id: switch.centralite_3210l_0ca5df0e_1
   - service: switch.turn_on
     entity_id: switch.extra_plug
+
+turn_off_extra_plugs:
+  alias: Turn off extra plugs
+  sequence:
+  - service: switch.turn_off
+    entity_id: switch.centralite_3210l_0ca6e973_1
+
+turn_on_extra_plugs:
+  alias: Turn on extra plugs
+  sequence:
+  - service: switch.turn_on
+    entity_id: switch.centralite_3210l_0ca6e973_1
 
 turn_off_cameras:
   alias: Turn off cameras

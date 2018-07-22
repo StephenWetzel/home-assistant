@@ -201,6 +201,8 @@ recorder:
       - sensor.cpu_temperature
       - sensor.centralite_3210l_0ca5df0e_1_2820
       - sensor.centralite_3210l_0ca6e973_1_2820
+      - input_boolean.light_outside
+
 
 media_player:
   - platform: mpd
@@ -270,5 +272,10 @@ light:
     entities:
       - light.sengled_e11g13_0306f75b_1
       - light.sengled_e11g13_030c7069_1
+
+input_boolean:
+  light_outside:
+    name: Is it light outside
+
 
 
