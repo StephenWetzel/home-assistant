@@ -254,7 +254,7 @@ emulated_hue:
     - light
     - switch
   entities:
-    script.star_trek:
+    script.dim_lights:
       hidden: false
     script.stop_sound:
       hidden: false
