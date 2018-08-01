@@ -249,6 +249,17 @@ intent_script:
       text: Sensor is {{ states('sensor.'  + Sensor | replace(" ", "_")) }}
 
 emulated_hue:
+  expose_by_default: true
+  exposed_domains:
+    - light
+    - switch
+  entities:
+    script.star_trek:
+      hidden: false
+    script.stop_sound:
+      hidden: false
+    group.all_lights:
+      hidden: false
 
 # intent_script:
 #   ActivateSceneIntent:

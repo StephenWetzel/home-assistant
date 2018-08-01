@@ -129,6 +129,18 @@ turn_on_the_fans:
   - service: switch.turn_on
     entity_id: switch.extra_plug
 
+turn_off_extra_plugs:
+  alias: Turn off extra plugs
+  sequence:
+  - service: switch.turn_off
+    entity_id: switch.centralite_3210l_0ca6e973_1
+
+turn_on_extra_plugs:
+  alias: Turn on extra plugs
+  sequence:
+  - service: switch.turn_on
+    entity_id: switch.centralite_3210l_0ca6e973_1
+
 turn_off_cameras:
   alias: Turn off cameras
   sequence:
