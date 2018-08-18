@@ -83,6 +83,19 @@ turn_on_some_lights:
       kelvin: 2700
       transition: 15
 
+dim_lights:
+  alias: Dim lights
+  sequence:
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_0306f75b_1
+    data:
+      brightness: 1
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
+      brightness: 1
+      kelvin: 2700
+
 flash_the_lights:
   alias: Flash all lights
   sequence:

@@ -103,3 +103,8 @@ sensor.sengled_e11g13_030c7069_1_1794:
   name:
   platform: zha
   unique_id: b0:ce:18:14:03:0c:70:69-1-1794
+media_player.chrome:
+  config_entry_id:
+  name:
+  platform: plex
+  unique_id: xj6ixg1lieja8sizi52xww5m

@@ -78,7 +78,7 @@
   action:
   - service: script.turn_off_cameras
   - service: script.turn_on_the_fans
-  - service: script.turn_on_extra_plugss
+  - service: script.turn_on_extra_plugs
 
 - alias: Leave home
   trigger:
@@ -90,7 +90,7 @@
   - service: script.turn_on_cameras
   - service: script.turn_off_the_fans
   - service: script.turn_off_the_lights
-  - service: script.turn_off_extra_plugss
+  - service: script.turn_off_extra_plugs
 
 - alias: Basement Light Left On
   trigger:
