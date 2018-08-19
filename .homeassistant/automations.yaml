@@ -98,9 +98,12 @@
     platform: numeric_state
     above: 40
     for:
-      hours: 1
+      minutes: 20
   action:
   - service: notify.steve_hangouts
+    data:
+      message: The basement lights are on
+  - service: notify.melanie_hangouts
     data:
       message: The basement lights are on
   - service: script.flash_the_lights
@@ -120,7 +123,7 @@
     platform: numeric_state
     below: 8
     for:
-      minutes: 10
+      minutes: 5
   action:
   - service: input_boolean.turn_off
     data:
@@ -132,7 +135,7 @@
     platform: numeric_state
     above: 30
     for:
-      minutes: 5
+      minutes: 3
   action:
   - service: input_boolean.turn_on
     data:
@@ -182,5 +185,81 @@
 #   action:
 #   - service: script.turn_off_the_lights
 
+- alias: Washer Running
+  trigger:
+  - entity_id: sensor.washer
+    platform: state
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 3
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.washer_running
 
+- alias: Washer Stopped
+  trigger:
+  - entity_id: sensor.washer
+    platform: state
+    from: 'on'
+    to: 'off'
+    for:
+      minutes: 6
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.washer_running
+
+- alias: Washer Done
+  trigger:
+  - entity_id: input_boolean.washer_running
+    platform: state
+    to: 'off'
+  action:
+  - service: notify.steve_hangouts
+    data:
+      message: The washer is done
+  - service: notify.melanie_hangouts
+    data:
+      message: The washer is done
+
+- alias: Dryer Running
+  trigger:
+  - entity_id: sensor.dryer
+    platform: state
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 3
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.dryer_running
+
+- alias: Dryer Stopped
+  trigger:
+  - entity_id: sensor.dryer
+    platform: state
+    from: 'on'
+    to: 'off'
+    for:
+      minutes: 6
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.dryer_running
+
+- alias: Dryer Done
+  trigger:
+  - entity_id: input_boolean.dryer_running
+    platform: state
+    to: 'off'
+  action:
+  - service: notify.steve_hangouts
+    data:
+      message: The dryer is done
+  - service: notify.melanie_hangouts
+    data:
+      message: The dryer is done
 

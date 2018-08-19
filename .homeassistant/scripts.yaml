@@ -231,5 +231,7 @@ alert_xmpp:
   - service: notify.steve_hangouts
     data:
       message: 'Alert!'
-
+  - service: notify.melanie_hangouts
+    data:
+      message: 'Alert!'
 
