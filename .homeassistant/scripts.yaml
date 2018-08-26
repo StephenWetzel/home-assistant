@@ -96,6 +96,32 @@ dim_lights:
       brightness: 1
       kelvin: 2700
 
+night_light:
+  alias: Night lights
+  sequence:
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_0306f75b_1
+    data:
+      brightness: 1
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
+      brightness: 1
+      kelvin: 2700
+  - service: light.turn_off
+    entity_id: light.sengled_e11g13_030c7069_1
+    data:
+      transition: 1
+  - service: light.turn_off
+    entity_id: light.sengled_e11g13_030eb7c8_1
+    data:
+      transition: 1
+  - service: light.turn_off
+    entity_id: light.sengled_e11g13_030eb42b_1
+    data:
+      transition: 1
+
+
 flash_the_lights:
   alias: Flash all lights
   sequence:

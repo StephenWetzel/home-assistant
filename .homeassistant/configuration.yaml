@@ -272,6 +272,8 @@ emulated_hue:
     - light
     - switch
   entities:
+    script.night_light:
+      hidden: false
     script.dim_lights:
       hidden: false
     script.stop_sound:
