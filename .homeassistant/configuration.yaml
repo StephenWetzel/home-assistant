@@ -184,11 +184,11 @@ device_tracker:
 
 switch:
   - platform: tplink
-    host: 192.168.1.22
+    host: 192.168.1.44
   - platform: tplink
-    host: 192.168.1.36
+    host: 192.168.1.46
   - platform: tplink
-    host: 192.168.1.31
+    host: 192.168.1.47
 
 
 recorder:
