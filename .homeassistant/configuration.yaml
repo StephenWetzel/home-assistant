@@ -177,18 +177,18 @@ sensor:
 
 device_tracker:
   - platform: unifi_direct
-    host: 192.168.1.17
+    host: !secret ap_ip
     username: !secret unifi_username
     password: !secret unifi_password
 
 
 switch:
   - platform: tplink
-    host: 192.168.1.44
+    host: !secret switch_1_ip
   - platform: tplink
-    host: 192.168.1.46
+    host: !secret switch_2_ip
   - platform: tplink
-    host: 192.168.1.47
+    host: !secret switch_3_ip
 
 
 recorder:
@@ -224,11 +224,11 @@ recorder:
 
 media_player:
   - platform: mpd
-    host: 192.168.1.148
+    host: !secret bedroom_pi_ip
     name: mpd_bed_room
   - platform: mpd
     name: mpd_office
-    host: 192.168.1.138
+    host: !secret pc_ip
 
 notify:
   - platform: xmpp
@@ -243,7 +243,7 @@ notify:
     recipient: !secret steve_gmail_username
 
 # apcupsd:
-#   host: 192.168.1.138
+#   host: !secret pc_ip
 
 # shell_command:
 #   scrub_db: 'python /home/homeassistant/.homeassistant/python_scripts/scrub_db.py'
