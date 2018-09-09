@@ -49,4 +49,17 @@ media_player.roku_yr00aa293226:
   friendly_name: Living Room Roku
 switch.extra_plug:
   friendly_name: Living Room Fan
-
+sensor.centralite_3210l_0ca6e973_1_1794:
+  hidden: true
+sensor.centralite_3210l_0ca5df0e_1_1794:
+  hidden: true
+sensor.sengled_e11g13_030eb7c8_1_1794:
+  hidden: true
+sensor.sengled_e11g13_030eb42b_1_1794:
+  hidden: true
+sensor.sengled_e11g13_0306f75b_1_1794:
+  hidden: true
+sensor.sengled_e11g13_030c7069_1_1794:
+  hidden: true
+sensor.sengled_z01a19nae26_0301dbb2_1_1794:
+  hidden: true

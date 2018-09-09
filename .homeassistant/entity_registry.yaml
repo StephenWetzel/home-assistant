@@ -108,3 +108,13 @@ media_player.chrome:
   name:
   platform: plex
   unique_id: xj6ixg1lieja8sizi52xww5m
+sensor.melanies_iphone_battery_level:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_melanies_iphone
+sensor.melanies_iphone_battery_state:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_melanies_iphone
