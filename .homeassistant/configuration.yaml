@@ -220,6 +220,7 @@ recorder:
       - sensor.centralite_3210l_0ca5df0e_1_2820
       - sensor.centralite_3210l_0ca6e973_1_2820
       - input_boolean.light_outside
+      - automation.wakeup__slowly_turn_on_light
 
 
 media_player:
@@ -249,22 +250,21 @@ notify:
 #   scrub_db: 'python /home/homeassistant/.homeassistant/python_scripts/scrub_db.py'
 #   test: 'echo hi'
 
-alexa:
-
-intent_script:
-  RunScriptIntent:
-    action:
-      service: script.turn_on
-      data_template:
-        entity_id: script.{{ Script | replace(" ", "_") }}
-    speech:
-      type: plain
-      text: OK
-  GetSensorIntent:
-    speech:
-      type: plain
-      # text: Sensor is {{ "states.sensor." + Sensor | replace(" ", "_") }}
-      text: Sensor is {{ states('sensor.'  + Sensor | replace(" ", "_")) }}
+# alexa:
+# intent_script:
+#   RunScriptIntent:
+#     action:
+#       service: script.turn_on
+#       data_template:
+#         entity_id: script.{{ Script | replace(" ", "_") }}
+#     speech:
+#       type: plain
+#       text: OK
+#   GetSensorIntent:
+#     speech:
+#       type: plain
+#       # text: Sensor is {{ "states.sensor." + Sensor | replace(" ", "_") }}
+#       text: Sensor is {{ states('sensor.'  + Sensor | replace(" ", "_")) }}
 
 emulated_hue:
   expose_by_default: true
@@ -275,7 +275,7 @@ emulated_hue:
     script.night_light:
       hidden: false
     script.dim_lights:
-      hidden: false
+      hidden: true
     script.stop_sound:
       hidden: false
     group.all_lights:

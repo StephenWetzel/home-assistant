@@ -1,6 +1,8 @@
 turn_off_the_lights:
   alias: Turn off all lights
   sequence:
+  - service: homeassistant.turn_off
+    entity_id: script.slowly_turn_on_lights
   - service: light.turn_off
     entity_id: light.sengled_e11g13_0306f75b_1
     data:
@@ -21,6 +23,7 @@ turn_off_the_lights:
     entity_id: light.sengled_e11g13_030eb42b_1
     data:
       transition: 5
+
 
 turn_on_the_lights:
   alias: Turn on all lights
@@ -83,6 +86,52 @@ turn_on_some_lights:
       kelvin: 2700
       transition: 15
 
+slowly_turn_on_lights:
+  alias: Slowly turn on lights
+  sequence:
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
+      brightness: 0
+      kelvin: 2700
+      transition: 3
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030eb7c8_1
+    data:
+      brightness: 0
+      transition: 3
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030eb42b_1
+    data:
+      brightness: 0
+      transition: 3
+  - delay: '00:00:10'
+  - service: light.turn_on
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
+      brightness: 255
+      kelvin: 6500
+      transition: 600
+  - delay: '00:05:00'
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030eb7c8_1
+    data:
+      brightness: 255
+      transition: 600
+  - delay: '00:05:00'
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030eb42b_1
+    data:
+      brightness: 255
+      transition: 600
+  - delay: '01:00:00'
+  - service: light.turn_off
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+  - service: light.turn_off
+    entity_id: light.sengled_e11g13_030eb7c8_1
+  - service: light.turn_off
+    entity_id: light.sengled_e11g13_030eb42b_1
+
 dim_lights:
   alias: Dim lights
   sequence:
@@ -97,7 +146,7 @@ dim_lights:
       kelvin: 2700
 
 night_light:
-  alias: Night lights
+  alias: Night light
   sequence:
   - service: light.turn_on
     entity_id: light.sengled_e11g13_0306f75b_1
@@ -120,7 +169,6 @@ night_light:
     entity_id: light.sengled_e11g13_030eb42b_1
     data:
       transition: 1
-
 
 flash_the_lights:
   alias: Flash all lights
@@ -260,4 +308,3 @@ alert_xmpp:
   - service: notify.melanie_hangouts
     data:
       message: 'Alert!'
-
