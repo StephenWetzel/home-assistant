@@ -118,3 +118,58 @@ sensor.melanies_iphone_battery_state:
   name:
   platform: ios
   unique_id: state_melanies_iphone
+media_player.this_device:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: 8ACD24B8377447118F4FA485A527977D
+media_player.this_device_2:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: d2055f1e76a4479597b16317be0855f3
+media_player.melanies_fire_tv_stick:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: 7094052060930WWH
+media_player.living_room:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: G090L91181872CM6
+media_player.stephens_alexa_apps:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: BLUR1HD9E4E78AB9FFFC23B
+media_player.bedroom:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: G090LF0964641NWE
+media_player.melanies_alexa_apps:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: 5BF493E3276644958176EDE1225C89CB
+media_player.melanies_fire:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: G0K0KK0262260A4S
+switch.centralite_3210l_113b4f0e_1:
+  config_entry_id:
+  name: Office Outlet
+  platform: zha
+  unique_id: 00:0d:6f:00:11:3b:4f:0e-1
+sensor.centralite_3210l_113b4f0e_1_1794:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: 00:0d:6f:00:11:3b:4f:0e-1-1794
+sensor.centralite_3210l_113b4f0e_1_2820:
+  config_entry_id:
+  name: Office Outlet
+  platform: zha
+  unique_id: 00:0d:6f:00:11:3b:4f:0e-1-2820

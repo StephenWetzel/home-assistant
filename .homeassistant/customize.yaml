@@ -63,3 +63,13 @@ sensor.sengled_e11g13_030c7069_1_1794:
   hidden: true
 sensor.sengled_z01a19nae26_0301dbb2_1_1794:
   hidden: true
+media_player.melanies_alexa_apps:
+  hidden: true
+media_player.stephens_alexa_apps:
+  hidden: true
+media_player.this_device_2:
+  hidden: true
+media_player.this_device:
+  hidden: true
+sensor.centralite_3210l_113b4f0e_1_1794:
+  hidden: true
