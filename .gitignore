@@ -14,4 +14,3 @@ known_devices.yaml
 plex.conf
 *.jar
 .storage
-custom_components
