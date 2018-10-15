@@ -16,7 +16,7 @@
   id: '1510114284366'
   trigger:
   - platform: time
-    at: '07:45:00'
+    at: '07:35:00'
   condition:
   - condition: time
     weekday:
