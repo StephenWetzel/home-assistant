@@ -68,7 +68,7 @@ turn_on_some_lights:
       brightness: 0
       kelvin: 2700
       transition: 1
-  - delay: '00:00:10'
+  - delay: '00:00:01'
   - service: light.turn_on
     entity_id: light.sengled_e11g13_0306f75b_1
     data:
@@ -164,10 +164,13 @@ night_light:
     data:
       brightness: 1
   - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_e11g13_030e1908_1
     data:
       brightness: 1
-      kelvin: 2700
+  - service: light.turn_off
+    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    data:
+      transition: 1
   - service: light.turn_off
     entity_id: light.sengled_e11g13_030c7069_1
     data:
