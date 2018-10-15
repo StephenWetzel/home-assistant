@@ -221,12 +221,16 @@ turn_off_extra_plugs:
   sequence:
   - service: switch.turn_off
     entity_id: switch.centralite_3210l_0ca6e973_1
+  - service: switch.turn_off
+    entity_id: switch.centralite_3210l_113b4f0e_1
 
 turn_on_extra_plugs:
   alias: Turn on extra plugs
   sequence:
   - service: switch.turn_on
     entity_id: switch.centralite_3210l_0ca6e973_1
+  - service: switch.turn_on
+    entity_id: switch.centralite_3210l_113b4f0e_1
 
 turn_off_cameras:
   alias: Turn off cameras
@@ -265,7 +269,7 @@ stop_sound:
       entity_id: media_player.mpd_living_room
 
 star_trek:
-  alias: Ambient - TNG
+  alias: Ambient Star Trek
   sequence:
   - service: media_player.play_media
     data:
@@ -274,7 +278,7 @@ star_trek:
       media_content_id: star_trek_warp
 
 brook:
-  alias: Ambient - Brook
+  alias: Ambient Brook
   sequence:
   - service: media_player.play_media
     data:
@@ -283,7 +287,7 @@ brook:
       media_content_id: brook
 
 fire:
-  alias: Ambient - Fire
+  alias: Ambient Fire
   sequence:
   - service: media_player.play_media
     data:
@@ -292,7 +296,7 @@ fire:
       media_content_id: fire
 
 waves:
-  alias: Ambient - Waves
+  alias: Ambient Waves
   sequence:
   - service: media_player.play_media
     data:

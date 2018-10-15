@@ -66,12 +66,14 @@ system:
     - sensor.speedtest_ping
     - sensor.ipv4_address_wlan0
     - sensor.since_last_boot
+    - sensor.uptime
     - sensor.ups_input_voltage
     - sensor.ups_load
     - sensor.ups_battery
     - sensor.pihole_dns_queries_today
     - sensor.pihole_ads_blocked_today
     - sensor.pihole_ads_percentage_blocked_today
+
 
 people:
   name: People

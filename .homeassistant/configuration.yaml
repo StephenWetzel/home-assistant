@@ -22,16 +22,13 @@ http:
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
-# auth_providers:
-#    - type: homeassistant
-#    # uncomment this to enable backwards compatible API password support
-#    - type: legacy_api_password
-
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
 mqtt:
+  broker: !secret mqtt_ip
+  username: !secret mqtt_username
   password: !secret mqtt_password
 
 # Checks for available updates
@@ -46,43 +43,25 @@ updater:
 # Discover some devices automatically
 discovery:
 
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
 # Enables support for tracking state changes over time
 history:
 
-# View all events in a logbook
-logbook:
+# # View all events in a logbook
+# logbook:
 
-# Enables a map showing the location of tracked devices
-map:
-
-# Track the sun
-sun:
-
-# Text to speech
-tts:
-  - platform: google
+# logger:
+#   default: info
+#   logs:
+#     homeassistant.components.zha: debug
+#     bellows: debug
+#     bellows.zigbee.application: debug
+#     zigpy: debug
 
 zha:
   usb_path: /dev/ttyUSB1
   database_path: /home/homeassistant/.homeassistant/zigbee.db
 
 sensor:
-  - platform: darksky
-    api_key: !secret dark_sky_key
-    monitored_conditions:
-      - summary
-      - precip_type
-      - apparent_temperature
-
-  # - platform: apcupsd
-  #   resources:
-  #     - bcharge
-  #     - linev
-  #     - loadpct
-
   - platform: dht
     sensor: DHT22
     name: "Living Room"
@@ -143,13 +122,10 @@ sensor:
     value_template: '{{ value_json.dryer }}'
     state_topic: "home/basement/appliances"
 
-  - platform: speedtest
-    monitored_conditions:
-      - ping
 
-  - platform: yr
 
-  # - platform: moon
+  - platform: uptime
+    unit_of_measurement: hours
 
   - platform: systemmonitor
     resources:
@@ -162,11 +138,7 @@ sensor:
         arg: wlan0
       - type: since_last_boot
 
-  # - platform: pi_hole
-  #   monitored_conditions:
-  #     - ads_blocked_today
-  #     - dns_queries_today
-  #     - ads_percentage_today
+
 
   - platform: command_line
     name: CPU Temperature
@@ -224,17 +196,17 @@ recorder:
       - automation.wakeup__slowly_turn_on_light
 
 
-media_player:
-  - platform: mpd
-    host: !secret bedroom_pi_ip
-    name: mpd_bed_room
-  - platform: mpd
-    name: mpd_office
-    host: !secret pc_ip
-  - platform: alexa
-    email: !secret amazon_email
-    password: !secret amazon_password
-    url: "amazon.com"
+# media_player:
+#   - platform: mpd
+#     host: !secret bedroom_pi_ip
+#     name: mpd_bed_room
+#   - platform: mpd
+#     name: mpd_office
+#     host: !secret pc_ip
+#   - platform: alexa
+#     email: !secret amazon_email
+#     password: !secret amazon_password
+#     url: "amazon.com"
 
 notify:
   - platform: xmpp
@@ -247,6 +219,67 @@ notify:
     sender: !secret xmpp_username
     password: !secret xmpp_password
     recipient: !secret steve_gmail_username
+
+
+emulated_hue:
+  expose_by_default: true
+  exposed_domains:
+    - light
+    - switch
+  entities:
+    script.night_light:
+      hidden: false
+    script.dim_lights:
+      hidden: true
+    script.stop_sound:
+      hidden: false
+    script.star_trek:
+      hidden: false
+    group.all_lights:
+      hidden: false
+
+
+
+light:
+  - platform: group
+    name: Bedroom Lights
+    entities:
+      - light.sengled_z01a19nae26_0301dbb2_1
+      - light.sengled_e11g13_030eb7c8_1
+      - light.sengled_e11g13_030eb42b_1
+  - platform: group
+    name: Living Room Lights
+    entities:
+      - light.sengled_e11g13_0306f75b_1
+      - light.sengled_e11g13_030c7069_1
+
+input_boolean:
+  light_outside:
+    name: Is it light outside
+  washer_running:
+    name: Is the washer running
+  dryer_running:
+    name: Is the dryer running
+
+
+
+
+
+
+
+
+
+### Old Configs ###
+
+# intent_script:
+#   ActivateSceneIntent:
+#     action:
+#       service: scene.turn_on
+#       data_template:
+#         entity_id: scene.{{ Scene | replace(" ", "_") }}
+#     speech:
+#       type: plain
+#       text: OK
 
 # apcupsd:
 #   host: !secret pc_ip
@@ -271,51 +304,53 @@ notify:
 #       # text: Sensor is {{ "states.sensor." + Sensor | replace(" ", "_") }}
 #       text: Sensor is {{ states('sensor.'  + Sensor | replace(" ", "_")) }}
 
-emulated_hue:
-  expose_by_default: true
-  exposed_domains:
-    - light
-    - switch
-  entities:
-    script.night_light:
-      hidden: false
-    script.dim_lights:
-      hidden: true
-    script.stop_sound:
-      hidden: false
-    group.all_lights:
-      hidden: false
 
-# intent_script:
-#   ActivateSceneIntent:
-#     action:
-#       service: scene.turn_on
-#       data_template:
-#         entity_id: scene.{{ Scene | replace(" ", "_") }}
-#     speech:
-#       type: plain
-#       text: OK
+# # Enables a map showing the location of tracked devices
+# map:
 
-light:
-  - platform: group
-    name: Bedroom Lights
-    entities:
-      - light.sengled_z01a19nae26_0301dbb2_1
-      - light.sengled_e11g13_030eb7c8_1
-      - light.sengled_e11g13_030eb42b_1
-  - platform: group
-    name: Living Room Lights
-    entities:
-      - light.sengled_e11g13_0306f75b_1
-      - light.sengled_e11g13_030c7069_1
+# # Track the sun
+# sun:
 
-input_boolean:
-  light_outside:
-    name: Is it light outside
-  washer_running:
-    name: Is the washer running
-  dryer_running:
-    name: Is the dryer running
+# # Text to speech
+# tts:
+#   - platform: google
+
+# mqtt:
+#   password: !secret mqtt_password
+
+# # Allows you to issue voice commands from the frontend in enabled browsers
+# conversation:
+
+# sensor:
+  # - platform: darksky
+  #   api_key: !secret dark_sky_key
+  #   monitored_conditions:
+  #     - summary
+  #     - precip_type
+  #     - apparent_temperature
+
+  # - platform: apcupsd
+  #   resources:
+  #     - bcharge
+  #     - linev
+  #     - loadpct
+
+  # - platform: pi_hole
+  #   monitored_conditions:
+  #     - ads_blocked_today
+  #     - dns_queries_today
+  #     - ads_percentage_today
+
+  # - platform: speedtest
+  #   monitored_conditions:
+  #     - ping
+
+  # - platform: yr
+
+  # - platform: moon
+
+
+
 
 
 

@@ -53,6 +53,10 @@ sensor.centralite_3210l_0ca6e973_1_1794:
   hidden: true
 sensor.centralite_3210l_0ca5df0e_1_1794:
   hidden: true
+sensor.centralite_3210l_113b4f0e_1_1794:
+  hidden: true
+sensor.centralite_3210l_0ca6f16b_1_1794:
+  hidden: true
 sensor.sengled_e11g13_030eb7c8_1_1794:
   hidden: true
 sensor.sengled_e11g13_030eb42b_1_1794:
@@ -70,6 +74,4 @@ media_player.stephens_alexa_apps:
 media_player.this_device_2:
   hidden: true
 media_player.this_device:
-  hidden: true
-sensor.centralite_3210l_113b4f0e_1_1794:
   hidden: true

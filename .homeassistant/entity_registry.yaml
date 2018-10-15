@@ -173,3 +173,28 @@ sensor.centralite_3210l_113b4f0e_1_2820:
   name: Office Outlet
   platform: zha
   unique_id: 00:0d:6f:00:11:3b:4f:0e-1-2820
+switch.centralite_3210l_0ca6f16b_1:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: 00:0d:6f:00:0c:a6:f1:6b-1
+sensor.centralite_3210l_0ca6f16b_1_1794:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: 00:0d:6f:00:0c:a6:f1:6b-1-1794
+sensor.centralite_3210l_0ca6f16b_1_2820:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: 00:0d:6f:00:0c:a6:f1:6b-1-2820
+light.centralite_3210l_0b4c9cbf_1:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: 00:0d:6f:00:0b:4c:9c:bf-1
+sensor.centralite_3210l_0b4c9cbf_1_2820:
+  config_entry_id:
+  name:
+  platform: zha
+  unique_id: 00:0d:6f:00:0b:4c:9c:bf-1-2820
