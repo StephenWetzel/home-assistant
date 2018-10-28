@@ -59,42 +59,34 @@ turn_on_some_lights:
   - service: light.turn_on
     entity_id: light.sengled_e11g13_0306f75b_1
     data:
-      brightness: 0
-      transition: 1
+      brightness: 200
+      transition: 10
   - service: light.turn_on
     entity_id: light.sengled_e11g13_030c7069_1
     data:
-      brightness: 0
-      transition: 1
+      brightness: 200
+      transition: 10
   - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_e11g13_030eb7c8_1
     data:
-      brightness: 0
-      kelvin: 2700
-      transition: 1
+      brightness: 100
+      transition: 10
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030eb42b_1
+    data:
+      brightness: 100
+      transition: 10
   - service: light.turn_on
     entity_id: light.sengled_e11g13_030e1908_1
     data:
-      brightness: 0
-      kelvin: 2700
-      transition: 1
-  - delay: '00:00:01'
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
-    data:
-      brightness: 200
-      transition: 15
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_030c7069_1
-    data:
-      brightness: 200
-      transition: 15
+      brightness: 100
+      transition: 10
   - service: light.turn_on
     entity_id: light.sengled_z01a19nae26_0301dbb2_1
     data:
-      brightness: 255
+      brightness: 100
       kelvin: 2700
-      transition: 15
+      transition: 10
 
 slowly_turn_on_lights:
   alias: Slowly turn on lights
@@ -180,19 +172,19 @@ night_light:
   - service: light.turn_off
     entity_id: light.sengled_z01a19nae26_0301dbb2_1
     data:
-      transition: 1
+      transition: 3
   - service: light.turn_off
     entity_id: light.sengled_e11g13_030c7069_1
     data:
-      transition: 1
+      transition: 3
   - service: light.turn_off
     entity_id: light.sengled_e11g13_030eb7c8_1
     data:
-      transition: 1
+      transition: 3
   - service: light.turn_off
     entity_id: light.sengled_e11g13_030eb42b_1
     data:
-      transition: 1
+      transition: 3
 
 flash_the_lights:
   alias: Flash all lights
