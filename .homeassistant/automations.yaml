@@ -112,6 +112,21 @@
   action:
   - service: script.turn_on_some_lights
 
+- alias: Dusk - Turn on light (Away)
+  trigger:
+  - entity_id: input_boolean.light_outside
+    platform: state
+    to: 'off'
+  action:
+  - service: script.turn_on_some_lights
+
+- alias: Turn off lights 11pm
+  trigger:
+  - platform: time
+    at: '23:00:00'
+  action:
+  - service: script.turn_off_the_lights
+
 - alias: Home - Turn on light
   id: '1510273891568'
   trigger:
