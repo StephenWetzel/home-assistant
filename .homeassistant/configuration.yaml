@@ -171,6 +171,8 @@ recorder:
       - light
       - media_player
       - switch
+      - automation
+      - input_boolean
     entities:
       - sensor.speedtest_ping
       - sensor.ram_used
@@ -192,8 +194,6 @@ recorder:
       - sensor.centralite_3210l_0ca5df0e_1_2820
       - sensor.centralite_3210l_0ca6e973_1_2820
       - sensor.centralite_3210l_113b4f0e_1_2820
-      - input_boolean.light_outside
-      - automation.wakeup__slowly_turn_on_light
 
 
 # media_player:
