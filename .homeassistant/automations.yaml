@@ -12,22 +12,6 @@
 #         kelvin: 2700
 #         transition: 10
 
-- alias: Wakeup - Slowly Turn On Light
-  id: '1510114284366'
-  trigger:
-  - platform: time
-    at: '07:35:00'
-  condition:
-  - condition: time
-    weekday:
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
-  action:
-  - service: script.slowly_turn_on_lights
-
 - alias: Come home
   trigger:
   - entity_id: group.people
@@ -74,7 +58,7 @@
       to: 'playing'
   action:
     - service: switch.turn_off
-      entity_id: switch.extra_plug
+      entity_id: switch.living_room_fan
 
 - alias: Dusk
   trigger:
@@ -119,13 +103,6 @@
     to: 'off'
   action:
   - service: script.turn_on_some_lights
-
-- alias: Turn off lights 11pm
-  trigger:
-  - platform: time
-    at: '23:00:00'
-  action:
-  - service: script.turn_off_the_lights
 
 - alias: Home - Turn on light
   id: '1510273891568'
@@ -236,4 +213,37 @@
   - service: notify.melanie_hangouts
     data:
       message: The dryer is done
+
+- alias: Wakeup - Slowly Turn On Light
+  id: '1510114284366'
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (states.input_datetime.wakeup_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - service: script.slowly_turn_on_lights
+
+- alias: Turn off lights at time
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (states.input_datetime.lights_off_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+  - service: script.turn_off_the_lights
+
+
+- alias: Test Times
+  trigger:
+    platform: template
+    value_template: "{{ now().strftime('%H:%M') == (states.input_datetime.test_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+  - service: script.send_time
+
+
 

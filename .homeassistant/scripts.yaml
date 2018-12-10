@@ -3,6 +3,8 @@ turn_off_the_lights:
   sequence:
   - service: homeassistant.turn_off
     entity_id: script.slowly_turn_on_lights
+  - service: switch.turn_off
+    entity_id: switch.christmas_tree
   - service: light.turn_off
     entity_id: light.sengled_e11g13_0306f75b_1
     data:
@@ -27,7 +29,10 @@ turn_off_the_lights:
     entity_id: light.sengled_e11g13_030e1908_1
     data:
       transition: 5
-
+  - service: light.turn_off
+    entity_id: light.sengled_e11n1ea_0002e8c5_1
+    data:
+      transition: 5
 
 turn_on_the_lights:
   alias: Turn on all lights
@@ -56,15 +61,22 @@ turn_on_the_lights:
 turn_on_some_lights:
   alias: Turn on some lights
   sequence:
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
-    data:
-      brightness: 200
-      transition: 10
+  - service: switch.turn_on
+    entity_id: switch.christmas_tree
   - service: light.turn_on
     entity_id: light.sengled_e11g13_030c7069_1
     data:
       brightness: 200
+      transition: 10
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_030e1908_1
+    data:
+      brightness: 50
+      transition: 10
+  - service: light.turn_on
+    entity_id: light.sengled_e11g13_0306f75b_1
+    data:
+      brightness: 50
       transition: 10
   - service: light.turn_on
     entity_id: light.sengled_e11g13_030eb7c8_1
@@ -77,7 +89,7 @@ turn_on_some_lights:
       brightness: 0
       transition: 10
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030e1908_1
+    entity_id: light.sengled_e11n1ea_0002e8c5_1
     data:
       brightness: 100
       transition: 10
@@ -108,15 +120,17 @@ slowly_turn_on_lights:
       brightness: 0
       transition: 3
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030e1908_1
+    entity_id: light.sengled_e11n1ea_0002e8c5_1
     data:
       brightness: 0
+      kelvin: 2000
       transition: 3
   - delay: '00:00:10'
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030e1908_1
+    entity_id: light.sengled_e11n1ea_0002e8c5_1
     data:
       brightness: 255
+      kelvin: 3500
       transition: 600
   - delay: '00:10:00'
   - service: light.turn_on
@@ -144,37 +158,33 @@ slowly_turn_on_lights:
     entity_id: light.sengled_e11g13_030eb7c8_1
   - service: light.turn_off
     entity_id: light.sengled_e11g13_030eb42b_1
-
-dim_lights:
-  alias: Dim lights
-  sequence:
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
-    data:
-      brightness: 1
-  - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
-    data:
-      brightness: 1
-      kelvin: 2700
+  - service: light.turn_off
+    entity_id: light.sengled_e11n1ea_0002e8c5_1
 
 night_light:
   alias: Night light
   sequence:
+  - service: switch.turn_on
+    entity_id: switch.christmas_tree
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
+    entity_id: light.sengled_e11g13_030c7069_1
     data:
       brightness: 1
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030e1908_1
+    entity_id: light.sengled_e11n1ea_0002e8c5_1
     data:
+      kelvin: 2000
       brightness: 1
   - service: light.turn_off
     entity_id: light.sengled_z01a19nae26_0301dbb2_1
     data:
       transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030c7069_1
+    entity_id: light.sengled_e11g13_0306f75b_1
+    data:
+      transition: 3
+  - service: light.turn_off
+    entity_id: light.sengled_e11g13_030e1908_1
     data:
       transition: 3
   - service: light.turn_off
@@ -222,7 +232,7 @@ turn_off_the_fans:
   - service: switch.turn_off
     entity_id: switch.centralite_3210l_0ca5df0e_1
   - service: switch.turn_off
-    entity_id: switch.extra_plug
+    entity_id: switch.living_room_fan
 
 turn_on_the_fans:
   alias: Turn on all fans
@@ -230,7 +240,7 @@ turn_on_the_fans:
   - service: switch.turn_on
     entity_id: switch.centralite_3210l_0ca5df0e_1
   - service: switch.turn_on
-    entity_id: switch.extra_plug
+    entity_id: switch.living_room_fan
 
 turn_off_extra_plugs:
   alias: Turn off extra plugs
@@ -252,21 +262,17 @@ turn_off_cameras:
   alias: Turn off cameras
   sequence:
   - service: switch.turn_off
-    entity_id: switch.jesse_room_camera
+    entity_id: switch.centralite_3210l_0ca6f16b_1
   - service: switch.turn_off
     entity_id: switch.downstairs_cameras
-  - service: switch.turn_off
-    entity_id: switch.dining_room_camera
 
 turn_on_cameras:
   alias: Turn on cameras
   sequence:
   - service: switch.turn_on
-    entity_id: switch.jesse_room_camera
+    entity_id: switch.centralite_3210l_0ca6f16b_1
   - service: switch.turn_on
     entity_id: switch.downstairs_cameras
-  - service: switch.turn_on
-    entity_id: switch.dining_room_camera
 
 stop_sound:
   alias: Stop All Sound
@@ -328,3 +334,12 @@ alert_xmpp:
   - service: notify.melanie_hangouts
     data:
       message: 'Alert!'
+
+send_time:
+  sequence:
+  - service: notify.steve_hangouts
+    data_template:
+      message: "'{{ now().strftime('%H:%M') == (states.input_datetime.test_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}'"
+  - service: notify.steve_hangouts
+    data_template:
+      message: "'{{ now().strftime('%H:%M') }}' == '{{ (states.input_datetime.test_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}'"

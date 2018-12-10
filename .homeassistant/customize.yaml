@@ -35,6 +35,8 @@ device_tracker.b8634d4ac717:
   friendly_name: Melanie
 device_tracker.b827eb308efb:
   hidden: true
+device_tracker.versa:
+  hidden: true
 group.all_lights:
   hidden: false
 media_player.mpd_office:
