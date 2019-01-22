@@ -136,7 +136,7 @@ sensor:
       - type: load_15m
       - type: ipv4_address
         arg: wlan0
-      - type: since_last_boot
+      - type: last_boot
 
 
 
@@ -197,9 +197,9 @@ recorder:
       - sensor.washer
       - sensor.dryer
       - sensor.cpu_temperature
-      - sensor.centralite_3210l_0ca5df0e_1_2820
-      - sensor.centralite_3210l_0ca6e973_1_2820
-      - sensor.centralite_3210l_113b4f0e_1_2820
+      # - sensor.centralite_3210l_0ca5df0e_1_2820
+      # - sensor.centralite_3210l_0ca6e973_1_2820
+      # - sensor.centralite_3210l_113b4f0e_1_2820
 
 
 # media_player:
@@ -276,13 +276,6 @@ input_datetime:
     name: Lights Off Time
     has_date: false
     has_time: true
-  test_time:
-    name: Test Time
-    has_date: false
-    has_time: true
-
-
-
 
 
 

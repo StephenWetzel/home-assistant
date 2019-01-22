@@ -3,8 +3,6 @@ turn_off_the_lights:
   sequence:
   - service: homeassistant.turn_off
     entity_id: script.slowly_turn_on_lights
-  - service: switch.turn_off
-    entity_id: switch.christmas_tree
   - service: light.turn_off
     entity_id: light.sengled_e11g13_0306f75b_1
     data:
@@ -33,30 +31,8 @@ turn_off_the_lights:
     entity_id: light.sengled_e11n1ea_0002e8c5_1
     data:
       transition: 5
-
-turn_on_the_lights:
-  alias: Turn on all lights
-  sequence:
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
-    data:
-      transition: 5
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_030c7069_1
-    data:
-      transition: 5
-  - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
-    data:
-      transition: 5
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_030eb7c8_1
-    data:
-      transition: 5
-  - service: light.turn_on
-    entity_id: light.sengled_e11g13_030eb42b_1
-    data:
-      transition: 5
+  - service: switch.turn_off
+    entity_id: switch.christmas_tree
 
 turn_on_some_lights:
   alias: Turn on some lights
@@ -246,15 +222,11 @@ turn_off_extra_plugs:
   alias: Turn off extra plugs
   sequence:
   - service: switch.turn_off
-    entity_id: switch.centralite_3210l_0ca6e973_1
-  - service: switch.turn_off
     entity_id: switch.centralite_3210l_113b4f0e_1
 
 turn_on_extra_plugs:
   alias: Turn on extra plugs
   sequence:
-  - service: switch.turn_on
-    entity_id: switch.centralite_3210l_0ca6e973_1
   - service: switch.turn_on
     entity_id: switch.centralite_3210l_113b4f0e_1
 
@@ -262,7 +234,7 @@ turn_off_cameras:
   alias: Turn off cameras
   sequence:
   - service: switch.turn_off
-    entity_id: switch.centralite_3210l_0ca6f16b_1
+    entity_id: switch.centralite_3210l_0ca6e973_1
   - service: switch.turn_off
     entity_id: switch.downstairs_cameras
 
@@ -270,7 +242,7 @@ turn_on_cameras:
   alias: Turn on cameras
   sequence:
   - service: switch.turn_on
-    entity_id: switch.centralite_3210l_0ca6f16b_1
+    entity_id: switch.centralite_3210l_0ca6e973_1
   - service: switch.turn_on
     entity_id: switch.downstairs_cameras
 
@@ -298,48 +270,3 @@ star_trek:
       entity_id: media_player.mpd_bed_room
       media_content_type: playlist
       media_content_id: star_trek_warp
-
-brook:
-  alias: Ambient Brook
-  sequence:
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.mpd_bed_room
-      media_content_type: playlist
-      media_content_id: brook
-
-fire:
-  alias: Ambient Fire
-  sequence:
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.mpd_bed_room
-      media_content_type: playlist
-      media_content_id: fire
-
-waves:
-  alias: Ambient Waves
-  sequence:
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.mpd_bed_room
-      media_content_type: playlist
-      media_content_id: waves
-
-alert_xmpp:
-  sequence:
-  - service: notify.steve_hangouts
-    data:
-      message: 'Alert!'
-  - service: notify.melanie_hangouts
-    data:
-      message: 'Alert!'
-
-send_time:
-  sequence:
-  - service: notify.steve_hangouts
-    data_template:
-      message: "'{{ now().strftime('%H:%M') == (states.input_datetime.test_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}'"
-  - service: notify.steve_hangouts
-    data_template:
-      message: "'{{ now().strftime('%H:%M') }}' == '{{ (states.input_datetime.test_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}'"

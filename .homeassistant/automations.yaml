@@ -1,17 +1,3 @@
-# - alias: Wakeup - Slowly Turn Off Light
-#   id: '1510113291429'
-#   trigger:
-#   - platform: time
-#     at: 07:00:00
-#   condition: []
-#   action:
-#     - service: light.turn_on
-#       entity_id: light.sengled_z01a19nae26_0301dbb2_1
-#       data:
-#         brightness: 0
-#         kelvin: 2700
-#         transition: 10
-
 - alias: Come home
   trigger:
   - entity_id: group.people
@@ -22,6 +8,10 @@
   - service: script.turn_off_cameras
   - service: script.turn_on_the_fans
   - service: script.turn_on_extra_plugs
+  - condition: state
+    entity_id: input_boolean.light_outside
+    state: 'off'
+  - service: script.turn_on_some_lights
 
 - alias: Leave home
   trigger:
@@ -103,38 +93,6 @@
     to: 'off'
   action:
   - service: script.turn_on_some_lights
-
-- alias: Home - Turn on light
-  id: '1510273891568'
-  trigger:
-  - entity_id: group.people
-    platform: state
-    from: not_home
-    to: home
-  condition:
-    condition: state
-    entity_id: input_boolean.light_outside
-    state: 'off'
-  # condition:
-  # - below: '1'
-  #   condition: numeric_state
-  #   entity_id: sun.sun
-  #   value_template: '{{ state.attributes.elevation }}'
-  action:
-  - service: script.turn_on_some_lights
-
-
-# This could interfere with the wakeup script
-# Could use another bool to track if wakeup is currently running
-# - alias: Dawn - Turn off light
-#   trigger:
-#   - entity_id: sensor.living_room_light
-#     platform: numeric_state
-#     below: 10
-#     for:
-#       minutes: 5
-#   action:
-#   - service: script.turn_off_the_lights
 
 - alias: Washer Running
   trigger:
@@ -236,14 +194,5 @@
     value_template: "{{ states('sensor.time') == (states.input_datetime.lights_off_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
   action:
   - service: script.turn_off_the_lights
-
-
-- alias: Test Times
-  trigger:
-    platform: template
-    value_template: "{{ now().strftime('%H:%M') == (states.input_datetime.test_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
-  action:
-  - service: script.send_time
-
 
 
