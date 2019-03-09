@@ -185,7 +185,7 @@ sensor.centralite_3210l_113b4f0e_1_2820:
   unique_id: 00:0d:6f:00:11:3b:4f:0e-1-2820
 switch.centralite_3210l_0ca6f16b_1:
   config_entry_id:
-  name:
+  name: Downstairs Camera 2
   platform: zha
   unique_id: 00:0d:6f:00:0c:a6:f1:6b-1
 sensor.centralite_3210l_0ca6f16b_1_1794:
