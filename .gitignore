@@ -16,3 +16,4 @@ plex.conf
 .storage
 *.bak
 *.pyc
+.DS_Store

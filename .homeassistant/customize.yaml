@@ -31,9 +31,15 @@ sensor.dht_sensor_temperature:
 device_tracker.d02598b8fe77:
   friendly_name: Melanie-Old
   hidden: true
+device_tracker.c8028ff9150f:
+  hidden: true
+device_tracker.c8028ff88286:
+  hidden: true
 device_tracker.b8634d4ac717:
   friendly_name: Melanie
 device_tracker.b827eb308efb:
+  hidden: true
+device_tracker.versa:
   hidden: true
 group.all_lights:
   hidden: false
@@ -77,3 +83,28 @@ media_player.this_device_2:
   hidden: true
 media_player.this_device:
   hidden: true
+
+light.sengled_z01a19nae26_0301dbb2_1:
+  friendly_name: Bedroom Light 1 # Temperature, Bedroom
+light.sengled_e11g13_030eb7c8_1:
+  friendly_name: Bedroom Light 2
+light.sengled_e11g13_030eb42b_1:
+  friendly_name: Bedroom Light 3
+light.sengled_e11n1ea_0002e8c5_1: # Color, Bedroom TV
+  friendly_name: Bedroom Light 4
+light.sengled_e11g13_030c7069_1: # Behind TV
+  friendly_name: Living Room Light 1
+light.sengled_e11g13_0306f75b_1: # Living Room Lamp
+  friendly_name: Living Room Light 2
+light.sengled_e11g13_030e1908_1: # Living Room Lamp
+  friendly_name: Living Room Light 3
+switch.centralite_3210l_0ca6f16b_1: # Behind TV Camera
+  friendly_name: Downstairs Camera 2
+light.sengled_e11g13_031086ee_1: # Front door
+  friendly_name: Front Light 1
+light.sengled_e11g13_030c7f32_1: # Front door
+  friendly_name: Front Light 2
+binary_sensor.samjin_multi_0104a69b_1_1280: # Front door
+  friendly_name: Front Door
+sensor.samjin_multi_0104a69b_1_1026: # Front door
+  friendly_name: Front Door Temperature

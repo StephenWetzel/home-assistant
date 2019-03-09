@@ -40,7 +40,9 @@ lights:
   entities:
     - group.all_lights
     - script.turn_off_the_lights
-    - script.turn_on_the_lights
+    - script.turn_on_some_lights
+    - script.slowly_turn_on_lights
+    - script.night_light
 
 switches:
   name: Switches

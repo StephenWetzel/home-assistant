@@ -136,7 +136,7 @@ sensor:
       - type: load_15m
       - type: ipv4_address
         arg: wlan0
-      - type: since_last_boot
+      - type: last_boot
 
 
 
@@ -146,6 +146,11 @@ sensor:
     # If errors occur, remove degree symbol below
     unit_of_measurement: "°C CPU"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+  - platform: time_date
+    display_options:
+      - 'time'
+
 
 device_tracker:
   - platform: unifi_direct
@@ -171,6 +176,9 @@ recorder:
       - light
       - media_player
       - switch
+      - automation
+      - input_boolean
+      - input_datetime
     entities:
       - sensor.speedtest_ping
       - sensor.ram_used
@@ -189,11 +197,9 @@ recorder:
       - sensor.washer
       - sensor.dryer
       - sensor.cpu_temperature
-      - sensor.centralite_3210l_0ca5df0e_1_2820
-      - sensor.centralite_3210l_0ca6e973_1_2820
-      - sensor.centralite_3210l_113b4f0e_1_2820
-      - input_boolean.light_outside
-      - automation.wakeup__slowly_turn_on_light
+      # - sensor.centralite_3210l_0ca5df0e_1_2820
+      # - sensor.centralite_3210l_0ca6e973_1_2820
+      # - sensor.centralite_3210l_113b4f0e_1_2820
 
 
 # media_player:
@@ -238,8 +244,6 @@ emulated_hue:
     group.all_lights:
       hidden: false
 
-
-
 light:
   - platform: group
     name: Bedroom Lights
@@ -247,12 +251,18 @@ light:
       - light.sengled_z01a19nae26_0301dbb2_1
       - light.sengled_e11g13_030eb7c8_1
       - light.sengled_e11g13_030eb42b_1
-      - light.sengled_e11g13_030e1908_1
+      - light.sengled_e11n1ea_0002e8c5_1
   - platform: group
     name: Living Room Lights
     entities:
       - light.sengled_e11g13_0306f75b_1
       - light.sengled_e11g13_030c7069_1
+      - light.sengled_e11g13_030e1908_1
+  - platform: group
+    name: Front Lights
+    entities:
+      - light.sengled_e11g13_031086ee_1
+      - light.sengled_e11g13_030c7f32_1
 
 input_boolean:
   light_outside:
@@ -262,11 +272,15 @@ input_boolean:
   dryer_running:
     name: Is the dryer running
 
-
-
-
-
-
+input_datetime:
+  wakeup_time:
+    name: Wakeup Time
+    has_date: false
+    has_time: true
+  lights_off_time:
+    name: Lights Off Time
+    has_date: false
+    has_time: true
 
 
 

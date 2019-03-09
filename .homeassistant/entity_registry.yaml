@@ -3,16 +3,6 @@ media_player.plex_web_firefox:
   name:
   platform: plex
   unique_id: fzm7978uxgt22upqqu5ztly9
-light.sengled_e11g13_0306f75b_1:
-  config_entry_id:
-  name: Living Room Light 1
-  platform: zha
-  unique_id: b0:ce:18:14:03:06:f7:5b-1
-light.sengled_z01a19nae26_0301dbb2_1:
-  config_entry_id:
-  name: Bedroom Light 1
-  platform: zha
-  unique_id: b0:ce:18:14:03:01:db:b2-1
 switch.centralite_3210l_0ca6e973_1:
   config_entry_id:
   name: Curling Iron Outlet
@@ -28,6 +18,11 @@ media_player.roku_premiere__yr00aa293226:
   name:
   platform: plex
   unique_id: 5ea95f3ac9daeb1103f563be4927cf9b
+light.sengled_z01a19nae26_0301dbb2_1:
+  config_entry_id:
+  name: Bedroom Light 1
+  platform: zha
+  unique_id: b0:ce:18:14:03:01:db:b2-1
 light.sengled_e11g13_030eb7c8_1:
   config_entry_id:
   name: Bedroom Light 2
@@ -38,9 +33,24 @@ light.sengled_e11g13_030eb42b_1:
   name: Bedroom Light 3
   platform: zha
   unique_id: b0:ce:18:14:03:0e:b4:2b-1
-light.sengled_e11g13_030e1908_1:
+light.sengled_e11n1ea_0002e8c5_1: # Color, Bedroom TV
   config_entry_id:
   name: Bedroom Light 4
+  platform: zha
+  unique_id: b0:ce:18:14:00:02:e8:c5-1
+light.sengled_e11g13_030c7069_1: # Behind TV
+  config_entry_id:
+  name: Living Room Light 1
+  platform: zha
+  unique_id: b0:ce:18:14:03:0c:70:69-1
+light.sengled_e11g13_0306f75b_1: # Living Room Lamp
+  config_entry_id:
+  name: Living Room Light 2
+  platform: zha
+  unique_id: b0:ce:18:14:03:06:f7:5b-1
+light.sengled_e11g13_030e1908_1: # Living Room Lamp
+  config_entry_id:
+  name: Living Room Light 3
   platform: zha
   unique_id: b0:ce:18:14:03:0e:19:08-1
 sensor.sengled_e11g13_030eb7c8_1_1794:
@@ -98,11 +108,6 @@ media_player.roku_yr00aa293226:
   name:
   platform: roku
   unique_id: YR00AA293226
-light.sengled_e11g13_030c7069_1:
-  config_entry_id:
-  name: Living Room Light 2
-  platform: zha
-  unique_id: b0:ce:18:14:03:0c:70:69-1
 sensor.sengled_e11g13_030c7069_1_1794:
   config_entry_id:
   name:
