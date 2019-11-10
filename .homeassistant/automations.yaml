@@ -67,7 +67,7 @@
   trigger:
   - entity_id: sensor.living_room_light
     platform: numeric_state
-    below: 8
+    below: 5
     for:
       minutes: 5
   action:
@@ -79,7 +79,7 @@
   trigger:
   - entity_id: sensor.living_room_light
     platform: numeric_state
-    above: 30
+    above: 20
     for:
       minutes: 3
   action:
@@ -208,3 +208,63 @@
   action:
   - service: script.turn_off_the_lights
 
+- alias: Turn Off Lights With Button
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_ieee: 28:6d:97:00:01:06:3d:0c
+      command: button_single
+  action:
+  - service: script.turn_off_the_lights
+
+- alias: Night Light With Button
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_ieee: 28:6d:97:00:01:06:3d:0c
+      command: button_double
+  action:
+  - service: script.night_light
+
+- alias: Turn On Lights With Button
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_ieee: 28:6d:97:00:01:06:3d:0c
+      command: button_hold
+  action:
+  - service: script.turn_on_some_lights
+
+- alias: Update OpenUV
+  trigger:
+    platform: time_pattern
+    minutes: '/20'
+  condition:
+    condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    above: 10
+  action:
+    service: openuv.update_uv_index_data
+
+- alias: Update OpenUV Hourly
+  trigger:
+    platform: time_pattern
+    minutes: '/60'
+  condition:
+    condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    above: -5
+  action:
+    service: openuv.update_uv_index_data
+
+- alias: Update OpenUV Protection
+  trigger:
+    platform: time
+    at: "02:12:00"
+  action:
+    service: openuv.update_protection_data

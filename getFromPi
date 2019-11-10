@@ -1,3 +1,0 @@
-#!/bin/sh
-
-scp -r homeassistant@192.168.1.147:/home/homeassistant/.homeassistant/ ./

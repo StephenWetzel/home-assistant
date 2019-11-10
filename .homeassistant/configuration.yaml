@@ -7,11 +7,8 @@ homeassistant:
   time_zone: America/New_York
   customize: !include customize.yaml
 
-# Enables the frontend
-frontend:
-
-# Enables configuration UI
-config:
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
 
 http:
   # Secrets are defined in the file secrets.yaml
@@ -20,7 +17,6 @@ http:
   ssl_key: !secret ssl_key
   base_url: !secret base_url
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -49,26 +45,30 @@ history:
 # # View all events in a logbook
 # logbook:
 
-# logger:
-#   default: info
-#   logs:
-#     homeassistant.components.zha: debug
-#     bellows: debug
-#     bellows.zigbee.application: debug
-#     zigpy: debug
+logger:
+  default: info
+  logs:
+    homeassistant.components.openuv: debug
+    # bellows: debug
+    # bellows.zigbee.application: debug
+    # zigpy: debug
 
 zha:
   usb_path: /dev/ttyUSB1
   database_path: /home/homeassistant/.homeassistant/zigbee.db
 
 sensor:
-  - platform: dht
-    sensor: DHT22
-    name: "Living Room"
-    pin: 23
-    monitored_conditions:
-      - temperature
-      - humidity
+  - platform: mqtt
+    name: "Living Room Temperature"
+    unit_of_measurement: '°F'
+    value_template: '{{ value_json.temperature }}'
+    state_topic: "home/living_room/temperature"
+
+  - platform: mqtt
+    name: "Living Room Humidity"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json.humidity }}'
+    state_topic: "home/living_room/temperature"
 
   - platform: mqtt
     name: "Living Room Light"
@@ -122,8 +122,6 @@ sensor:
     value_template: '{{ value_json.dryer }}'
     state_topic: "home/basement/appliances"
 
-
-
   - platform: uptime
     unit_of_measurement: hours
 
@@ -132,17 +130,16 @@ sensor:
       - type: disk_use_percent
         arg: /
       - type: memory_use_percent
+      - type: processor_use
       - type: load_1m
       - type: load_15m
       - type: ipv4_address
-        arg: wlan0
+        arg: enp1s0
       - type: last_boot
-
-
 
   - platform: command_line
     name: CPU Temperature
-    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    command: "cat /sys/class/thermal/thermal_zone3/temp"
     # If errors occur, remove degree symbol below
     unit_of_measurement: "°C CPU"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
@@ -151,24 +148,41 @@ sensor:
     display_options:
       - 'time'
 
+  - platform: github
+    access_token: !secret github_access_token
+    repositories:
+      - path: 'home-assistant/home-assistant'
+
+  - platform: pi_hole
+    host: !secret pi_hole_ip
+    monitored_conditions:
+      - ads_blocked_today
+      - dns_queries_today
+      - ads_percentage_today
+
+
+speedtestdotnet:
+  scan_interval:
+    hours: 6
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
 
 device_tracker:
   - platform: unifi_direct
     host: !secret ap_ip
     username: !secret unifi_username
     password: !secret unifi_password
+    new_device_defaults:
+      track_new_devices: true
 
-
-switch:
-  - platform: tplink
-    host: !secret switch_1_ip
-  - platform: tplink
-    host: !secret switch_2_ip
-  - platform: tplink
-    host: !secret switch_3_ip
-
+tplink:
+  discovery: true
 
 recorder:
+  db_url: postgres://@/homeassistant
   purge_interval: 1
   purge_keep_days: 10
   include:
@@ -176,13 +190,13 @@ recorder:
       - light
       - media_player
       - switch
-      - automation
+      # - automation
       - input_boolean
       - input_datetime
     entities:
       - sensor.speedtest_ping
       - sensor.ram_used
-      - sensor.disk_used_
+      - sensor.disk_used
       - sensor.dht_sensor_humidity
       - sensor.dht_sensor_temperature
       - sensor.living_room_humidity
@@ -197,9 +211,13 @@ recorder:
       - sensor.washer
       - sensor.dryer
       - sensor.cpu_temperature
-      # - sensor.centralite_3210l_0ca5df0e_1_2820
-      # - sensor.centralite_3210l_0ca6e973_1_2820
-      # - sensor.centralite_3210l_113b4f0e_1_2820
+      - sensor.samjin_multi_0104a69b_1_1026
+      - binary_sensor.samjin_multi_0104a69b_1_1280
+      - sensor.centralite_3210_l_0ca5df0e_1_2820
+      - sensor.centralite_3210_l_0ca6e973_1_2820
+      - sensor.centralite_3210_l_113b4f0e_1_2820
+      - sensor.samjin_button_01063d0c_1_1026
+      - sensor.current_uv_index
 
 
 # media_player:
@@ -227,42 +245,42 @@ notify:
     recipient: !secret steve_gmail_username
 
 
-emulated_hue:
-  expose_by_default: true
-  exposed_domains:
-    - light
-    - switch
-  entities:
-    script.night_light:
-      hidden: false
-    script.dim_lights:
-      hidden: true
-    script.stop_sound:
-      hidden: false
-    script.star_trek:
-      hidden: false
-    group.all_lights:
-      hidden: false
+# emulated_hue:
+#   expose_by_default: true
+#   exposed_domains:
+#     - light
+#     - switch
+#   entities:
+#     script.night_light:
+#       hidden: false
+#     script.dim_lights:
+#       hidden: true
+#     script.stop_sound:
+#       hidden: false
+#     script.star_trek:
+#       hidden: false
+#     group.all_lights:
+#       hidden: false
 
 light:
   - platform: group
     name: Bedroom Lights
     entities:
-      - light.sengled_z01a19nae26_0301dbb2_1
-      - light.sengled_e11g13_030eb7c8_1
-      - light.sengled_e11g13_030eb42b_1
-      - light.sengled_e11n1ea_0002e8c5_1
+      - light.sengled_z01_a19nae26_0301dbb2_1
+      - light.sengled_e11_g13_030eb7c8_1
+      - light.sengled_e11_g13_030eb42b_1
+      - light.sengled_e11_n1ea_0002e8c5_1
   - platform: group
     name: Living Room Lights
     entities:
-      - light.sengled_e11g13_0306f75b_1
-      - light.sengled_e11g13_030c7069_1
-      - light.sengled_e11g13_030e1908_1
+      - light.sengled_e11_g13_0306f75b_1
+      - light.sengled_e11_g13_030c7069_1
+      - light.sengled_e11_g13_030e1908_1
   - platform: group
     name: Front Lights
     entities:
-      - light.sengled_e11g13_031086ee_1
-      - light.sengled_e11g13_030c7f32_1
+      - light.sengled_e11_g13_031086ee_1
+      - light.sengled_e11_g13_030c7f32_1
 
 input_boolean:
   light_outside:
@@ -282,6 +300,24 @@ input_datetime:
     has_date: false
     has_time: true
 
+weather:
+  - platform: darksky
+    api_key: !secret dark_sky_key
+
+openuv:
+  api_key: !secret open_uv_key
+  sensors:
+    monitored_conditions:
+      - current_ozone_level
+      - current_uv_index
+      - current_uv_level
+      - max_uv_index
+      - safe_exposure_time_type_2
+
+api:
+
+alexa:
+  smart_home:
 
 
 ### Old Configs ###
@@ -350,11 +386,6 @@ input_datetime:
   #     - linev
   #     - loadpct
 
-  # - platform: pi_hole
-  #   monitored_conditions:
-  #     - ads_blocked_today
-  #     - dns_queries_today
-  #     - ads_percentage_today
 
   # - platform: speedtest
   #   monitored_conditions:

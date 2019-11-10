@@ -4,78 +4,78 @@ turn_off_the_lights:
   - service: homeassistant.turn_off
     entity_id: script.slowly_turn_on_lights
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_0306f75b_1
+    entity_id: light.sengled_e11_g13_0306f75b_1
     data:
-      transition: 5
+      transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030c7069_1
+    entity_id: light.sengled_e11_g13_030c7069_1
     data:
-      transition: 5
+      transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:
-      transition: 5
+      transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030eb7c8_1
+    entity_id: light.sengled_e11_g13_030eb7c8_1
     data:
-      transition: 5
+      transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030eb42b_1
+    entity_id: light.sengled_e11_g13_030eb42b_1
     data:
-      transition: 5
+      transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030e1908_1
+    entity_id: light.sengled_e11_g13_030e1908_1
     data:
-      transition: 5
+      transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11n1ea_0002e8c5_1
+    entity_id: light.sengled_e11_n1ea_0002e8c5_1
     data:
-      transition: 5
+      transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_031086ee_1
+    entity_id: light.sengled_e11_g13_031086ee_1
     data:
-      transition: 5
+      transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030c7f32_1
+    entity_id: light.sengled_e11_g13_030c7f32_1
     data:
-      transition: 5
+      transition: 3
 
 
 turn_on_some_lights:
   alias: Turn on some lights
   sequence:
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030c7069_1
+    entity_id: light.sengled_e11_g13_030c7069_1
     data:
       brightness: 200
       transition: 10
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030e1908_1
+    entity_id: light.sengled_e11_g13_030e1908_1
     data:
       brightness: 50
       transition: 10
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
+    entity_id: light.sengled_e11_g13_0306f75b_1
     data:
       brightness: 50
       transition: 10
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030eb7c8_1
+    entity_id: light.sengled_e11_g13_030eb7c8_1
     data:
       brightness: 100
       transition: 10
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030eb42b_1
+    entity_id: light.sengled_e11_g13_030eb42b_1
     data:
       brightness: 0
       transition: 10
   - service: light.turn_on
-    entity_id: light.sengled_e11n1ea_0002e8c5_1
+    entity_id: light.sengled_e11_n1ea_0002e8c5_1
     data:
       brightness: 100
       transition: 10
   - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:
       brightness: 100
       kelvin: 2700
@@ -85,22 +85,22 @@ turn_on_front_lights:
   alias: Turn on front lights
   sequence:
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_031086ee_1
+    entity_id: light.sengled_e11_g13_031086ee_1
     data:
       brightness: 200
       transition: 1
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030c7f32_1
+    entity_id: light.sengled_e11_g13_030c7f32_1
     data:
       brightness: 200
       transition: 1
   - delay: '00:05:00'
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_031086ee_1
+    entity_id: light.sengled_e11_g13_031086ee_1
     data:
       transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030c7f32_1
+    entity_id: light.sengled_e11_g13_030c7f32_1
     data:
       transition: 3
 
@@ -108,62 +108,62 @@ slowly_turn_on_lights:
   alias: Slowly turn on lights
   sequence:
   - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:
       brightness: 0
       kelvin: 2700
       transition: 3
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030eb7c8_1
+    entity_id: light.sengled_e11_g13_030eb7c8_1
     data:
       brightness: 0
       transition: 3
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030eb42b_1
+    entity_id: light.sengled_e11_g13_030eb42b_1
     data:
       brightness: 0
       transition: 3
   - service: light.turn_on
-    entity_id: light.sengled_e11n1ea_0002e8c5_1
+    entity_id: light.sengled_e11_n1ea_0002e8c5_1
     data:
       brightness: 0
       kelvin: 2000
       transition: 3
   - delay: '00:00:10'
   - service: light.turn_on
-    entity_id: light.sengled_e11n1ea_0002e8c5_1
+    entity_id: light.sengled_e11_n1ea_0002e8c5_1
     data:
       brightness: 255
       kelvin: 3500
       transition: 600
   - delay: '00:10:00'
   - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:
       brightness: 255
       kelvin: 6500
       transition: 600
   - delay: '00:05:00'
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030eb7c8_1
+    entity_id: light.sengled_e11_g13_030eb7c8_1
     data:
       brightness: 255
       transition: 600
   - delay: '00:05:00'
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030eb42b_1
+    entity_id: light.sengled_e11_g13_030eb42b_1
     data:
       brightness: 255
       transition: 600
   - delay: '01:10:00'
   - service: light.turn_off
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030eb7c8_1
+    entity_id: light.sengled_e11_g13_030eb7c8_1
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030eb42b_1
+    entity_id: light.sengled_e11_g13_030eb42b_1
   - service: light.turn_off
-    entity_id: light.sengled_e11n1ea_0002e8c5_1
+    entity_id: light.sengled_e11_n1ea_0002e8c5_1
 
 night_light:
   alias: Night light
@@ -171,32 +171,32 @@ night_light:
   - service: switch.turn_on
     entity_id: switch.christmas_tree
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_030c7069_1
+    entity_id: light.sengled_e11_g13_030c7069_1
     data:
       brightness: 1
   - service: light.turn_on
-    entity_id: light.sengled_e11n1ea_0002e8c5_1
+    entity_id: light.sengled_e11_n1ea_0002e8c5_1
     data:
       kelvin: 2000
       brightness: 1
   - service: light.turn_off
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:
       transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_0306f75b_1
+    entity_id: light.sengled_e11_g13_0306f75b_1
     data:
       transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030e1908_1
+    entity_id: light.sengled_e11_g13_030e1908_1
     data:
       transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030eb7c8_1
+    entity_id: light.sengled_e11_g13_030eb7c8_1
     data:
       transition: 3
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_030eb42b_1
+    entity_id: light.sengled_e11_g13_030eb42b_1
     data:
       transition: 3
 
@@ -204,29 +204,29 @@ flash_the_lights:
   alias: Flash all lights
   sequence:
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
+    entity_id: light.sengled_e11_g13_0306f75b_1
     data:
       transition: 1
   - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:
       transition: 1
   - delay: 00:00:05
   - service: light.turn_off
-    entity_id: light.sengled_e11g13_0306f75b_1
+    entity_id: light.sengled_e11_g13_0306f75b_1
     data:
       transition: 1
   - service: light.turn_off
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:
       transition: 1
   - delay: 00:00:05
   - service: light.turn_on
-    entity_id: light.sengled_e11g13_0306f75b_1
+    entity_id: light.sengled_e11_g13_0306f75b_1
     data:
       transition: 1
   - service: light.turn_on
-    entity_id: light.sengled_z01a19nae26_0301dbb2_1
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:
       transition: 1
 
@@ -234,7 +234,7 @@ turn_off_the_fans:
   alias: Turn off all fans
   sequence:
   - service: switch.turn_off
-    entity_id: switch.centralite_3210l_0ca5df0e_1
+    entity_id: switch.centralite_3210_l_0ca5df0e_1
   - service: switch.turn_off
     entity_id: switch.living_room_fan
 
@@ -242,7 +242,7 @@ turn_on_the_fans:
   alias: Turn on all fans
   sequence:
   - service: switch.turn_on
-    entity_id: switch.centralite_3210l_0ca5df0e_1
+    entity_id: switch.centralite_3210_l_0ca5df0e_1
   - service: switch.turn_on
     entity_id: switch.living_room_fan
 
@@ -250,29 +250,33 @@ turn_off_extra_plugs:
   alias: Turn off extra plugs
   sequence:
   - service: switch.turn_off
-    entity_id: switch.centralite_3210l_113b4f0e_1
+    entity_id: switch.centralite_3210_l_113b4f0e_1
 
 turn_on_extra_plugs:
   alias: Turn on extra plugs
   sequence:
   - service: switch.turn_on
-    entity_id: switch.centralite_3210l_113b4f0e_1
+    entity_id: switch.centralite_3210_l_113b4f0e_1
 
 turn_off_cameras:
   alias: Turn off cameras
   sequence:
   - service: switch.turn_off
-    entity_id: switch.centralite_3210l_0ca6e973_1
+    entity_id: switch.centralite_3210_l_0ca6e973_1
   - service: switch.turn_off
     entity_id: switch.downstairs_cameras
+  - service: light.turn_off
+    entity_id: light.centralite_3210_l_0b4c9cbf_1
 
 turn_on_cameras:
   alias: Turn on cameras
   sequence:
   - service: switch.turn_on
-    entity_id: switch.centralite_3210l_0ca6e973_1
+    entity_id: switch.centralite_3210_l_0ca6e973_1
   - service: switch.turn_on
     entity_id: switch.downstairs_cameras
+  - service: light.turn_on
+    entity_id: light.centralite_3210_l_0b4c9cbf_1
 
 stop_sound:
   alias: Stop All Sound
@@ -298,3 +302,15 @@ star_trek:
       entity_id: media_player.mpd_bed_room
       media_content_type: playlist
       media_content_id: star_trek_warp
+
+check_zha:
+  alias: Check if ZHA is up
+  sequence:
+  - service: light.turn_off
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
+  - delay: 00:00:10
+  - service: light.turn_on
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
+  - delay: 00:00:10
+  - service: light.turn_off
+    entity_id: light.sengled_z01_a19nae26_0301dbb2_1

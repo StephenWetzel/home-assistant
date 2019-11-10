@@ -1,110 +1,33 @@
-device_tracker.android9e4e78ab9fffc23b:
-  friendly_name: BLU
+device_tracker.melanies_mbp:
   hidden: true
-device_tracker.androide3fba1225244fe27:
-  friendly_name: Steve
-device_tracker.000d6782445e:
+sensor.sengled_e11_n1ea_0002e8c5_1_1794:
   hidden: true
-device_tracket.98b6e9987760:
-  friendly_name: Thinkpad
+sensor.sengled_z01_a19nae26_0301dbb2_1_1794:
   hidden: true
-device_tracker.hassbian:
+sensor.sengled_e11_g13_030eb7c8_1_1794:
   hidden: true
-device_tracker.hs100:
+sensor.sengled_e11_g13_030eb42b_1_1794:
   hidden: true
-device_tracker.roomba3142841c20312650:
+sensor.centralite_3210_l_0ca5df0e_1_1794:
   hidden: true
-device_tracker.thinkpad:
+sensor.sengled_e11_g13_031086ee_1_1794:
   hidden: true
-device_tracker.phimac09:
+sensor.sengled_e11_g13_030c7f32_1_1794:
   hidden: true
-device_tracker.000d677d5c5a:
+sensor.sengled_e11_g13_0306f75b_1_1794:
   hidden: true
-device_tracker.8c0f6f3303f1:
+sensor.sengled_e11_g13_030e1908_1_1794:
   hidden: true
-device_tracker.amazon2e2addd61:
+sensor.sengled_e11_g13_030c7069_1_1794:
   hidden: true
-sensor.dht_sensor_humidity:
-  friendly_name: DHT Humidity
-sensor.dht_sensor_temperature:
-  friendly_name: DHT Temperature
-device_tracker.d02598b8fe77:
-  friendly_name: Melanie-Old
+sensor.centralite_3210_l_0ca6e973_1_1794:
   hidden: true
-device_tracker.c8028ff9150f:
-  hidden: true
-device_tracker.c8028ff88286:
-  hidden: true
-device_tracker.b8634d4ac717:
-  friendly_name: Melanie
-device_tracker.b827eb308efb:
-  hidden: true
-device_tracker.versa:
-  hidden: true
-group.all_lights:
-  hidden: false
-media_player.mpd_office:
-  friendly_name: Office MPD
-media_player.mpd_bed_room:
-  friendly_name: Bedroom MPD
-media_player.roku_5f45cm000620:
-  friendly_name: Bedroom Roku
-media_player.roku_3__1818_green:
-  friendly_name: Jesse's Roku
-media_player.roku_yr00aa293226:
-  friendly_name: Living Room Roku
-switch.extra_plug:
-  friendly_name: Living Room Fan
-sensor.centralite_3210l_0ca6e973_1_1794:
-  hidden: true
-sensor.centralite_3210l_0ca5df0e_1_1794:
-  hidden: true
-sensor.centralite_3210l_113b4f0e_1_1794:
-  hidden: true
-sensor.centralite_3210l_0ca6f16b_1_1794:
-  hidden: true
-sensor.sengled_e11g13_030eb7c8_1_1794:
-  hidden: true
-sensor.sengled_e11g13_030eb42b_1_1794:
-  hidden: true
-sensor.sengled_e11g13_0306f75b_1_1794:
-  hidden: true
-sensor.sengled_e11g13_030c7069_1_1794:
-  hidden: true
-sensor.sengled_e11g13_030e1908_1_1794:
-  hidden: true
-sensor.sengled_z01a19nae26_0301dbb2_1_1794:
-  hidden: true
-media_player.melanies_alexa_apps:
-  hidden: true
-media_player.stephens_alexa_apps:
-  hidden: true
-media_player.this_device_2:
-  hidden: true
-media_player.this_device:
+sensor.centralite_3210_l_113b4f0e_1_1794:
   hidden: true
 
-light.sengled_z01a19nae26_0301dbb2_1:
-  friendly_name: Bedroom Light 1 # Temperature, Bedroom
-light.sengled_e11g13_030eb7c8_1:
-  friendly_name: Bedroom Light 2
-light.sengled_e11g13_030eb42b_1:
-  friendly_name: Bedroom Light 3
-light.sengled_e11n1ea_0002e8c5_1: # Color, Bedroom TV
-  friendly_name: Bedroom Light 4
-light.sengled_e11g13_030c7069_1: # Behind TV
-  friendly_name: Living Room Light 1
-light.sengled_e11g13_0306f75b_1: # Living Room Lamp
-  friendly_name: Living Room Light 2
-light.sengled_e11g13_030e1908_1: # Living Room Lamp
-  friendly_name: Living Room Light 3
-switch.centralite_3210l_0ca6f16b_1: # Behind TV Camera
-  friendly_name: Downstairs Camera 2
-light.sengled_e11g13_031086ee_1: # Front door
-  friendly_name: Front Light 1
-light.sengled_e11g13_030c7f32_1: # Front door
-  friendly_name: Front Light 2
-binary_sensor.samjin_multi_0104a69b_1_1280: # Front door
-  friendly_name: Front Door
-sensor.samjin_multi_0104a69b_1_1026: # Front door
-  friendly_name: Front Door Temperature
+sensor.bedroom_humidity:
+  order: 1
+sensor.bedroom_temperature:
+  order: 2
+sensor.bedroom_light:
+  order: 3
