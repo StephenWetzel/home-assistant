@@ -289,6 +289,8 @@ input_boolean:
     name: Is the washer running
   dryer_running:
     name: Is the dryer running
+  skip_next_wakeup:
+    name: Skip next wakeup
 
 input_datetime:
   wakeup_time:

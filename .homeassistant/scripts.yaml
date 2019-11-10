@@ -107,6 +107,9 @@ turn_on_front_lights:
 slowly_turn_on_lights:
   alias: Slowly turn on lights
   sequence:
+  - condition: state
+    entity_id: input_boolean.skip_next_wakeup
+    state: 'off'
   - service: light.turn_on
     entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:

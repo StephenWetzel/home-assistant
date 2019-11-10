@@ -200,6 +200,8 @@
     - fri
   action:
   - service: script.slowly_turn_on_lights
+  - service: homeassistant.turn_off
+    entity_id: input_boolean.skip_next_wakeup
 
 - alias: Turn off lights at time
   trigger:
