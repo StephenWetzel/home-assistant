@@ -17,3 +17,4 @@ plex.conf
 *.bak
 *.pyc
 .DS_Store
+custom_components/*
