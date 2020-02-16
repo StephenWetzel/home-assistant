@@ -219,19 +219,6 @@ recorder:
       - sensor.samjin_button_01063d0c_1_1026
       - sensor.current_uv_index
 
-
-# media_player:
-#   - platform: mpd
-#     host: !secret bedroom_pi_ip
-#     name: mpd_bed_room
-#   - platform: mpd
-#     name: mpd_office
-#     host: !secret pc_ip
-#   - platform: alexa
-#     email: !secret amazon_email
-#     password: !secret amazon_password
-#     url: "amazon.com"
-
 notify:
   - platform: xmpp
     name: melanie_hangouts
@@ -244,23 +231,6 @@ notify:
     password: !secret xmpp_password
     recipient: !secret steve_gmail_username
 
-
-# emulated_hue:
-#   expose_by_default: true
-#   exposed_domains:
-#     - light
-#     - switch
-#   entities:
-#     script.night_light:
-#       hidden: false
-#     script.dim_lights:
-#       hidden: true
-#     script.stop_sound:
-#       hidden: false
-#     script.star_trek:
-#       hidden: false
-#     group.all_lights:
-#       hidden: false
 
 light:
   - platform: group
@@ -324,87 +294,6 @@ alexa:
 shell_command:
   white_noise: 'ssh -t pi@192.168.1.148 "mpc play"'
   stop_sound: 'ssh -t pi@192.168.1.148 "mpc stop"'
-
-
-
-
-### Old Configs ###
-
-# intent_script:
-#   ActivateSceneIntent:
-#     action:
-#       service: scene.turn_on
-#       data_template:
-#         entity_id: scene.{{ Scene | replace(" ", "_") }}
-#     speech:
-#       type: plain
-#       text: OK
-
-# apcupsd:
-#   host: !secret pc_ip
-
-# shell_command:
-#   scrub_db: 'python /home/homeassistant/.homeassistant/python_scripts/scrub_db.py'
-#   test: 'echo hi'
-
-# alexa:
-# intent_script:
-#   RunScriptIntent:
-#     action:
-#       service: script.turn_on
-#       data_template:
-#         entity_id: script.{{ Script | replace(" ", "_") }}
-#     speech:
-#       type: plain
-#       text: OK
-#   GetSensorIntent:
-#     speech:
-#       type: plain
-#       # text: Sensor is {{ "states.sensor." + Sensor | replace(" ", "_") }}
-#       text: Sensor is {{ states('sensor.'  + Sensor | replace(" ", "_")) }}
-
-
-# # Enables a map showing the location of tracked devices
-# map:
-
-# # Track the sun
-# sun:
-
-# # Text to speech
-# tts:
-#   - platform: google
-
-# mqtt:
-#   password: !secret mqtt_password
-
-# # Allows you to issue voice commands from the frontend in enabled browsers
-# conversation:
-
-# sensor:
-  # - platform: darksky
-  #   api_key: !secret dark_sky_key
-  #   monitored_conditions:
-  #     - summary
-  #     - precip_type
-  #     - apparent_temperature
-
-  # - platform: apcupsd
-  #   resources:
-  #     - bcharge
-  #     - linev
-  #     - loadpct
-
-
-  # - platform: speedtest
-  #   monitored_conditions:
-  #     - ping
-
-  # - platform: yr
-
-  # - platform: moon
-
-
-
 
 
 

@@ -7,7 +7,6 @@
   action:
   - service: script.turn_off_cameras
   - service: script.turn_on_the_fans
-  # - service: script.turn_on_extra_plugs
   - condition: state
     entity_id: input_boolean.light_outside
     state: 'off'
@@ -24,7 +23,6 @@
   - service: script.turn_on_cameras
   - service: script.turn_off_the_fans
   - service: script.turn_off_the_lights
-  # - service: script.turn_off_extra_plugs
   - service: shell_command.stop_sound
 
 - alias: Open front door
@@ -53,7 +51,6 @@
   - service: notify.melanie_hangouts
     data:
       message: The basement lights are on
-  - service: script.flash_the_lights
 
 - alias: Watch TV Living Room
   trigger:
@@ -68,7 +65,7 @@
   trigger:
   - entity_id: sensor.living_room_light
     platform: numeric_state
-    below: 5
+    below: 7
     for:
       minutes: 3
   action:

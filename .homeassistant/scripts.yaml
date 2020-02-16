@@ -215,36 +215,6 @@ night_light:
       transition: 3
   - service: shell_command.white_noise
 
-flash_the_lights:
-  alias: Flash all lights
-  sequence:
-  - service: light.turn_on
-    entity_id: light.sengled_e11_g13_0306f75b_1
-    data:
-      transition: 1
-  - service: light.turn_on
-    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
-    data:
-      transition: 1
-  - delay: 00:00:05
-  - service: light.turn_off
-    entity_id: light.sengled_e11_g13_0306f75b_1
-    data:
-      transition: 1
-  - service: light.turn_off
-    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
-    data:
-      transition: 1
-  - delay: 00:00:05
-  - service: light.turn_on
-    entity_id: light.sengled_e11_g13_0306f75b_1
-    data:
-      transition: 1
-  - service: light.turn_on
-    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
-    data:
-      transition: 1
-
 turn_off_the_fans:
   alias: Turn off all fans
   sequence:
@@ -261,18 +231,6 @@ turn_on_the_fans:
   - service: switch.turn_on
     entity_id: switch.living_room_fan
 
-turn_off_extra_plugs:
-  alias: Turn off extra plugs
-  sequence:
-  - service: switch.turn_off
-    entity_id: switch.centralite_3210_l_113b4f0e_1
-
-turn_on_extra_plugs:
-  alias: Turn on extra plugs
-  sequence:
-  - service: switch.turn_on
-    entity_id: switch.centralite_3210_l_113b4f0e_1
-
 turn_off_cameras:
   alias: Turn off cameras
   sequence:
@@ -288,40 +246,3 @@ turn_on_cameras:
     entity_id: switch.centralite_3210_l_0ca6e973_1
   - service: switch.turn_on
     entity_id: switch.downstairs_cameras
-
-stop_sound:
-  alias: Stop All Sound
-  sequence:
-  - service: media_player.media_stop
-    data:
-      entity_id: media_player.mpd_bed_room
-  - service: media_player.turn_off
-    data:
-      entity_id: media_player.mpd_bed_room
-  - service: media_player.media_stop
-    data:
-      entity_id: media_player.mpd_living_room
-  - service: media_player.turn_off
-    data:
-      entity_id: media_player.mpd_living_room
-
-star_trek:
-  alias: Ambient Star Trek
-  sequence:
-  - service: media_player.play_media
-    data:
-      entity_id: media_player.mpd_bed_room
-      media_content_type: playlist
-      media_content_id: star_trek_warp
-
-check_zha:
-  alias: Check if ZHA is up
-  sequence:
-  - service: light.turn_off
-    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
-  - delay: 00:00:10
-  - service: light.turn_on
-    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
-  - delay: 00:00:10
-  - service: light.turn_off
-    entity_id: light.sengled_z01_a19nae26_0301dbb2_1
