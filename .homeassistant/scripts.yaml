@@ -39,11 +39,20 @@ turn_off_the_lights:
     entity_id: light.sengled_e11_g13_030c7f32_1
     data:
       transition: 3
-
+  - service: light.turn_off
+    entity_id: light.centralite_3210_l_0b4c9cbf_1
+  - service: switch.turn_off
+    entity_id: switch.centralite_3210_l_0ca6f16b_1
+  - service: switch.turn_off
+    entity_id: switch.centralite_3210_l_113b4f0e_1
 
 turn_on_some_lights:
   alias: Turn on some lights
   sequence:
+  - service: light.turn_on
+    entity_id: light.centralite_3210_l_0b4c9cbf_1
+  - service: switch.turn_on
+    entity_id: switch.centralite_3210_l_0ca6f16b_1
   - service: light.turn_on
     entity_id: light.sengled_e11_g13_030c7069_1
     data:
@@ -80,6 +89,8 @@ turn_on_some_lights:
       brightness: 100
       kelvin: 2700
       transition: 10
+  - service: switch.turn_on
+    entity_id: switch.centralite_3210_l_113b4f0e_1
 
 turn_on_front_lights:
   alias: Turn on front lights
@@ -171,8 +182,8 @@ slowly_turn_on_lights:
 night_light:
   alias: Night light
   sequence:
-  - service: switch.turn_on
-    entity_id: switch.christmas_tree
+  - service: light.turn_off
+    entity_id: light.centralite_3210_l_0b4c9cbf_1
   - service: light.turn_on
     entity_id: light.sengled_e11_g13_030c7069_1
     data:
@@ -202,6 +213,7 @@ night_light:
     entity_id: light.sengled_e11_g13_030eb42b_1
     data:
       transition: 3
+  - service: shell_command.white_noise
 
 flash_the_lights:
   alias: Flash all lights
@@ -268,8 +280,6 @@ turn_off_cameras:
     entity_id: switch.centralite_3210_l_0ca6e973_1
   - service: switch.turn_off
     entity_id: switch.downstairs_cameras
-  - service: light.turn_off
-    entity_id: light.centralite_3210_l_0b4c9cbf_1
 
 turn_on_cameras:
   alias: Turn on cameras
@@ -278,8 +288,6 @@ turn_on_cameras:
     entity_id: switch.centralite_3210_l_0ca6e973_1
   - service: switch.turn_on
     entity_id: switch.downstairs_cameras
-  - service: light.turn_on
-    entity_id: light.centralite_3210_l_0b4c9cbf_1
 
 stop_sound:
   alias: Stop All Sound

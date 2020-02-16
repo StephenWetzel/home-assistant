@@ -7,7 +7,7 @@
   action:
   - service: script.turn_off_cameras
   - service: script.turn_on_the_fans
-  - service: script.turn_on_extra_plugs
+  # - service: script.turn_on_extra_plugs
   - condition: state
     entity_id: input_boolean.light_outside
     state: 'off'
@@ -24,7 +24,8 @@
   - service: script.turn_on_cameras
   - service: script.turn_off_the_fans
   - service: script.turn_off_the_lights
-  - service: script.turn_off_extra_plugs
+  # - service: script.turn_off_extra_plugs
+  - service: shell_command.stop_sound
 
 - alias: Open front door
   trigger:
@@ -69,7 +70,7 @@
     platform: numeric_state
     below: 5
     for:
-      minutes: 5
+      minutes: 3
   action:
   - service: input_boolean.turn_off
     data:
@@ -79,7 +80,7 @@
   trigger:
   - entity_id: sensor.living_room_light
     platform: numeric_state
-    above: 20
+    above: 10
     for:
       minutes: 3
   action:

@@ -321,6 +321,12 @@ api:
 alexa:
   smart_home:
 
+shell_command:
+  white_noise: 'ssh -t pi@192.168.1.148 "mpc play"'
+  stop_sound: 'ssh -t pi@192.168.1.148 "mpc stop"'
+
+
+
 
 ### Old Configs ###
 
