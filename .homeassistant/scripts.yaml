@@ -182,38 +182,49 @@ slowly_turn_on_lights:
 night_light:
   alias: Night light
   sequence:
+  - service: shell_command.white_noise
   - service: light.turn_off
     entity_id: light.centralite_3210_l_0b4c9cbf_1
   - service: light.turn_on
     entity_id: light.sengled_e11_g13_030c7069_1
     data:
-      brightness: 1
+      brightness: 32
   - service: light.turn_on
     entity_id: light.sengled_e11_n1ea_0002e8c5_1
     data:
       kelvin: 2000
       brightness: 1
-  - service: light.turn_off
+  - service: light.turn_on
     entity_id: light.sengled_z01_a19nae26_0301dbb2_1
     data:
-      transition: 3
-  - service: light.turn_off
+      brightness: 0
+      kelvin: 2000
+      transition: 125
+  - service: light.turn_on
     entity_id: light.sengled_e11_g13_0306f75b_1
     data:
-      transition: 3
-  - service: light.turn_off
+      brightness: 0
+      transition: 120
+  - service: light.turn_on
     entity_id: light.sengled_e11_g13_030e1908_1
     data:
-      transition: 3
-  - service: light.turn_off
+      brightness: 0
+      transition: 120
+  - service: light.turn_on
     entity_id: light.sengled_e11_g13_030eb7c8_1
     data:
-      transition: 3
-  - service: light.turn_off
+      brightness: 0
+      transition: 120
+  - service: light.turn_on
     entity_id: light.sengled_e11_g13_030eb42b_1
     data:
-      transition: 3
-  - service: shell_command.white_noise
+      brightness: 0
+      transition: 120
+  - service: light.turn_on
+    entity_id: light.sengled_e11_n1ea_0002e8c5_1
+    data:
+      color: red
+      brightness: 1
 
 turn_off_the_fans:
   alias: Turn off all fans
@@ -246,3 +257,8 @@ turn_on_cameras:
     entity_id: switch.centralite_3210_l_0ca6e973_1
   - service: switch.turn_on
     entity_id: switch.downstairs_cameras
+
+stop_sound:
+  alias: Stop White Noise
+  sequence:
+  - service: shell_command.stop_sound

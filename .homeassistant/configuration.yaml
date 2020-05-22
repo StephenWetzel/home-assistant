@@ -12,7 +12,6 @@ default_config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  api_password: !secret http_password
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
   base_url: !secret base_url
@@ -77,22 +76,22 @@ sensor:
     state_topic: "home/living_room/light"
 
   - platform: mqtt
-    name: "Bedroom Temperature"
+    name: "Attic Temperature"
     unit_of_measurement: '°F'
     value_template: '{{ value_json.temperature }}'
-    state_topic: "home/bedroom/temperature"
+    state_topic: "home/attic/temperature"
 
   - platform: mqtt
-    name: "Bedroom Humidity"
+    name: "Attic Humidity"
     unit_of_measurement: '%'
     value_template: '{{ value_json.humidity }}'
-    state_topic: "home/bedroom/temperature"
+    state_topic: "home/attic/temperature"
 
   - platform: mqtt
-    name: "Bedroom Light"
+    name: "Attic Light"
     unit_of_measurement: 'lux'
     value_template: '{{ value_json.light }}'
-    state_topic: "home/bedroom/light"
+    state_topic: "home/attic/light"
 
   - platform: mqtt
     name: "Basement Temperature"
@@ -152,14 +151,6 @@ sensor:
     access_token: !secret github_access_token
     repositories:
       - path: 'home-assistant/home-assistant'
-
-  - platform: pi_hole
-    host: !secret pi_hole_ip
-    monitored_conditions:
-      - ads_blocked_today
-      - dns_queries_today
-      - ads_percentage_today
-
 
 speedtestdotnet:
   scan_interval:
@@ -295,5 +286,6 @@ shell_command:
   white_noise: 'ssh -t pi@192.168.1.148 "mpc play"'
   stop_sound: 'ssh -t pi@192.168.1.148 "mpc stop"'
 
-
+pi_hole:
+  host: !secret pi_hole_ip
 

@@ -77,7 +77,7 @@
   trigger:
   - entity_id: sensor.living_room_light
     platform: numeric_state
-    above: 10
+    above: 15
     for:
       minutes: 3
   action:
